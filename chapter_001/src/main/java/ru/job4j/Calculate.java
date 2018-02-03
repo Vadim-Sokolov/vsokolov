@@ -12,6 +12,8 @@ public class Calculate {
 	
 	/**
 	* Main method - prints out a given String
+	* @param args - an array of String objects
+	* containing the supplied command-line arguments
 	*/
 	
 	public static void main(String[] args){
