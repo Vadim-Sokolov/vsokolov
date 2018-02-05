@@ -1,31 +1,31 @@
 package ru.job4j;
 
 /**
-* Class Calculate
-*
-* @author vsokolov
-* @version $Id$
-* @since 0.1
-*/
+ * Class Calculate
+ *
+ * @author vsokolov
+ * @version $Id$
+ * @since 0.1
+ */
 
 public class Calculate {
-	
+
 	/**
-	* Main method - prints out a given String
-	* @param args - an array of String objects
-	* containing the supplied command-line arguments
-	*/
-	
+	 * Main method - prints out a given String
+	 * @param args - an array of String objects
+	 * containing the supplied command-line arguments
+	 */
+
 	public static void main(String[] args) {
-		
+
 		System.out.println("Hello World !");
 	}
-	
+
 	/**
-	* Method echo.
-	* @param name Your name.
-	* @return Echo plus your name.
-	*/
+	 * Method echo.
+	 * @param name Your name.
+	 * @return Echo plus your name.
+	 */
 	public String echo(String name) {
 		return "Echo, echo, echo : " + name;
 	}
