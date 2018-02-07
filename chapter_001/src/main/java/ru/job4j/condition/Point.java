@@ -1,7 +1,7 @@
 package ru.job4j.condition;
 
 /**
- * @author vsokolov .
+ * @author vsokolov
  * @version $Id$
  * @since 0.1
  */
