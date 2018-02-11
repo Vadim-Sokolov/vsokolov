@@ -15,8 +15,7 @@ public class Max {
 	 */	
 	 public int max(int first, int second) {
 		 
-		 int result = (first > second) ? first : second;
-		 return result;
+		 return (first > second) ? first : second;
 	 }
 	 
 	 /**
@@ -28,7 +27,6 @@ public class Max {
 	 */	
 	 public int max(int first, int second, int third) {
 		 
-		 int result = max(max(first, second), third);
-		 return result;
+		 return max(max(first, second), third);
 	 }
 }
