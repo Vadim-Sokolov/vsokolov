@@ -1,5 +1,7 @@
 package ru.job4j.loop;
 
+import java.util.function.BiPredicate;
+
 /**
  * @author vsokolov
  * @version $Id$
@@ -14,13 +16,15 @@ public class Paint {
 	* @return sb.toString() - the String to be printed out
 	*/
 	public String pyramid(int height) {
-		
+		return this.loopBy(height, 2 * height - 1, (row, column) 
+		-> row >= height - column - 1 && row + height - 1 >= column);
+	}
+	
+	private String loopBy(int height, int width, BiPredicate<Integer, Integer> predict) {
 		StringBuilder sb = new StringBuilder();
-		int width = 2 * height - 1;
-		
 		for (int row = 0; row != height; row++) {
 			for (int column = 0; column != width; column++) {
-				if (row >= height - column - 1 && row + height - 1 >= column) {
+				if (predict.test(row, column)) {
 					sb.append("^");
 				} else {
 					sb.append(" ");
@@ -28,6 +32,6 @@ public class Paint {
 			}
 			sb.append(System.lineSeparator());
 		}
-		return sb.toString();
+		return sb.toString();	
 	}
 }
