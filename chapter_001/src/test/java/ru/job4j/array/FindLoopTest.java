@@ -15,19 +15,17 @@ public class FindLoopTest {
 	public void findElement() {
 		
 		FindLoop floop = new FindLoop();
-		Square squar = new Square();
-		int[] target = squar.calculate(5);
-		int result = floop.indexOf(target, 16);
-		assertThat(result, is(3));
+		int[] target = new int[] {1, 3, 5};
+		int result = floop.indexOf(target, 3);
+		assertThat(result, is(1));
 	}
 	
 	@Test
 	public void elementNotFound() {
 		
 		FindLoop floop = new FindLoop();
-		Square squar = new Square();
-		int[] target = squar.calculate(5);
-		int result = floop.indexOf(target, 15);
+		int[] target = new int[] {1, 3, 5};
+		int result = floop.indexOf(target, 4);
 		assertThat(result, is(-1));
 	}
 }
