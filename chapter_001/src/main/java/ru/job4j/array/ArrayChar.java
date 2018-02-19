@@ -22,7 +22,6 @@ public class ArrayChar {
 	* @return boolean
 	*/
 	public boolean startsWith(String prefix) {
-		boolean result = true;
 		char[] value = prefix.toCharArray();
 		char[] target = new char[value.length];
 		
@@ -30,5 +29,32 @@ public class ArrayChar {
 			target[i] = this.data[i];
 		}
 		return Arrays.equals(value, target);
+	}
+	
+	/**
+	* Method checks that a String contains 
+	* a given substring.
+	* @param origin - given String
+	* @param sub - the substring
+	* @return boolean
+	*/
+	public boolean contains(String origin, String sub) {
+		boolean result = false;
+		char[] originChar = origin.toCharArray();
+		char[] subChar = sub.toCharArray();
+		char[] target = new char[subChar.length];
+		
+		for (int i = 0; i < originChar.length; i++) {
+			if (originChar[i] == subChar[0] && originChar.length - i >= subChar.length) {
+				for (int j = 0, x = i; j < target.length; j++, x++) {
+					target[j] = originChar[x];
+				}
+				if (Arrays.equals(target, subChar)) { 
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
 	}
 }

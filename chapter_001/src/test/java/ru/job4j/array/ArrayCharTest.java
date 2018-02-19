@@ -24,4 +24,18 @@ public class ArrayCharTest {
 		boolean result = hello.startsWith("Hi");
 		assertThat(result, is(false));
 	}
+	
+	@Test
+	public void containsIsTrue() {
+		ArrayChar hi = new ArrayChar("Hi");
+		boolean result = hi.contains("Hello", "ell");
+		assertThat(result, is(true));
+	}
+	
+	@Test
+	public void containsIsFalse() {
+		ArrayChar hi = new ArrayChar("Hi");
+		boolean result = hi.contains("Hello", "ext");
+		assertThat(result, is(false));
+	}
 }
