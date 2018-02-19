@@ -24,7 +24,6 @@ public class ArrayChar {
 	public boolean startsWith(String prefix) {
 		char[] value = prefix.toCharArray();
 		char[] target = new char[value.length];
-		
 		for (int i = 0; i < value.length; i++) {
 			target[i] = this.data[i];
 		}
@@ -43,7 +42,6 @@ public class ArrayChar {
 		char[] originChar = origin.toCharArray();
 		char[] subChar = sub.toCharArray();
 		char[] target = new char[subChar.length];
-		
 		for (int i = 0; i < originChar.length; i++) {
 			if (originChar[i] == subChar[0] && originChar.length - i >= subChar.length) {
 				for (int j = 0, x = i; j < target.length; j++, x++) {

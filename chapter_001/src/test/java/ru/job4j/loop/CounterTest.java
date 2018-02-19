@@ -13,7 +13,6 @@ public class CounterTest {
 	
 	@Test
 	public void sumUpEvenNumbersBetween1And10() {
-		
 		Counter cnt = new Counter();
 		int result = cnt.add(1, 10);
 		assertThat(result, is(30));

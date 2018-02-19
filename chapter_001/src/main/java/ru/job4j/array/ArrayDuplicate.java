@@ -15,7 +15,6 @@ public class ArrayDuplicate {
 	* @return array
 	*/
 	public String[] remove(String[] array) {
-		
 		int unique = array.length;
 		for (int out = 0; out < unique; out++) {
 			for (int in = out + 1; in < unique; in++) {

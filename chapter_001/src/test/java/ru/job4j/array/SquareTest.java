@@ -13,7 +13,6 @@ public class SquareTest {
 	
 	@Test
 	public void lengthEquals5() {
-		
 		Square square = new Square();
 		int[] result = square.calculate(5);
 		assertThat(result.length, is(5));
@@ -21,7 +20,6 @@ public class SquareTest {
 	
 	@Test
 	public void fifthElementIs25() {
-		
 		Square square = new Square();
 		int[] result = square.calculate(5);
 		assertThat(result[4], is(25));

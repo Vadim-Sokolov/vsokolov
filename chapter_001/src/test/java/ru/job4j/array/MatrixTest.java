@@ -13,7 +13,6 @@ public class MatrixTest {
 	
 	@Test
 	public void reverseOddArray() {
-		
 		Matrix mats = new Matrix();
 		int[][] expected = new int[][] {{1, 2, 3}, {2, 4, 6}, {3, 6, 9}};
 		int[][] result = mats.multiple(3);

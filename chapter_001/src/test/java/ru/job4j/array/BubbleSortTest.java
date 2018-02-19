@@ -13,7 +13,6 @@ public class BubbleSortTest {
 	
 	@Test
 	public void reverseOddArray() {
-		
 		BubbleSort bs = new BubbleSort();
 		int[] target = new int[] {5, 1, 2, 7, 3};
 		int[] result = bs.sort(target);

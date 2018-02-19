@@ -10,7 +10,6 @@ public class CalculatorTest {
 
     @Test
     public void whenAddOnePlusOneThenTwo() {
-
         Calculator calc = new Calculator();
         calc.add(1D, 1D);
         double result = calc.getResult();
@@ -20,7 +19,6 @@ public class CalculatorTest {
 
     @Test
     public void whenSubtract1minus1Then0() {
-
         Calculator calc = new Calculator();
         calc.subtract(1D, 1D);
         double result = calc.getResult();
@@ -30,7 +28,6 @@ public class CalculatorTest {
 
     @Test
     public void whenMultiply2By2Then4() {
-
         Calculator calc = new Calculator();
         calc.multiply(2D, 2d);
         double result = calc.getResult();
@@ -40,7 +37,6 @@ public class CalculatorTest {
 
     @Test
     public void whenDivide4By2Then2() {
-
         Calculator calc = new Calculator();
         calc.divide(4D, 2D);
         double result = calc.getResult();

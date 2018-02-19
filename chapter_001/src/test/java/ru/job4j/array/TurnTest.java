@@ -13,7 +13,6 @@ public class TurnTest {
 	
 	@Test
 	public void reverseOddArray() {
-		
 		Turn turn = new Turn();
 		int[] target = new int[] {1, 2, 3, 4, 5};
 		int[] result = turn.back(target);

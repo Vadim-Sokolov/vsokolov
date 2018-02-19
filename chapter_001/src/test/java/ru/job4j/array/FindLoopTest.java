@@ -13,7 +13,6 @@ public class FindLoopTest {
 	
 	@Test
 	public void findElement() {
-		
 		FindLoop floop = new FindLoop();
 		int[] target = new int[] {1, 3, 5};
 		int result = floop.indexOf(target, 3);
@@ -22,7 +21,6 @@ public class FindLoopTest {
 	
 	@Test
 	public void elementNotFound() {
-		
 		FindLoop floop = new FindLoop();
 		int[] target = new int[] {1, 3, 5};
 		int result = floop.indexOf(target, 4);
