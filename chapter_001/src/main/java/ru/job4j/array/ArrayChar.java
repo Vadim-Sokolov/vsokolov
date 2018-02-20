@@ -41,16 +41,17 @@ public class ArrayChar {
 		boolean result = false;
 		char[] originChar = origin.toCharArray();
 		char[] subChar = sub.toCharArray();
-		char[] target = new char[subChar.length];
+		char target = subChar[0];
 		for (int i = 0; i < originChar.length; i++) {
-			if (originChar[i] == subChar[0] && originChar.length - i >= subChar.length) {
-				for (int j = 0, x = i; j < target.length; j++, x++) {
-					target[j] = originChar[x];
-				}
-				if (Arrays.equals(target, subChar)) { 
-					result = true;
-					break;
-				}
+			if (originChar[i] == target && originChar.length - i >= subChar.length) {
+				for (int j = 1, x = i + 1; j < subChar.length; j++, x++) {
+					if (subChar[j] != originChar[x]) {
+						result = false;
+						break;
+					} else {
+						result = true;
+					}
+				} return result;
 			}
 		}
 		return result;
