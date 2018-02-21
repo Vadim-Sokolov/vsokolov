@@ -46,12 +46,11 @@ public class ArrayChar {
 			if (originChar[i] == target && originChar.length - i >= subChar.length) {
 				for (int j = 1, x = i + 1; j < subChar.length; j++, x++) {
 					if (subChar[j] != originChar[x]) {
-						result = false;
 						break;
 					} else {
 						result = true;
 					}
-				} return result;
+				}
 			}
 		}
 		return result;
