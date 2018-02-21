@@ -48,7 +48,9 @@ public class ArrayChar {
 					if (subChar[j] != originChar[x]) {
 						break;
 					} else {
+						if (j == subChar.length - 1) {
 						result = true;
+						}
 					}
 				}
 			}
