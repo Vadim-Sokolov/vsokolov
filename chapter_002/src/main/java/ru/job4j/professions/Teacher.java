@@ -11,5 +11,7 @@ public class Teacher extends Profession {
 	* Method teaches a student.
 	* @param student
 	*/
-	public void teach(Student student) { }
+	public void teach(Student student) {
+		System.out.println("Let me teach you >_<");
+	}
 }

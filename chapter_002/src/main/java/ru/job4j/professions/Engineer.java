@@ -11,5 +11,7 @@ public class Engineer extends Profession {
 	* Method builds a house
 	* @param house
 	*/
-	public void build(House house) { }
+	public void build(House house) {
+		System.out.println("Building, building, building...");
+	}
 }

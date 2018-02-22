@@ -11,7 +11,9 @@ public class Doctor extends Profession {
 	* Method treats a patient.
 	* @param patient
 	*/
-	public void treat(Patient patient) { }
+	public void treat(Patient patient) {
+		System.out.println("Treating this patient.");
+	}
 	
 	/**
 	* Method returns a diagnosis for a patient
