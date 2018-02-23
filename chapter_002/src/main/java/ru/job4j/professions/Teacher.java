@@ -12,6 +12,6 @@ public class Teacher extends Profession {
 	* @param student
 	*/
 	public void teach(Student student) {
-		System.out.println("Let me teach you >_<");
+		System.out.println("Teacher Clayton is teaching a student Carter.");
 	}
 }
