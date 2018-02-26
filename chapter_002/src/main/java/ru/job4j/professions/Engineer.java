@@ -12,6 +12,6 @@ public class Engineer extends Profession {
 	* @param house
 	*/
 	public void build(House house) {
-		System.out.println("Engineer Brad is building an cottage house.");
+		System.out.println("Engineer " + this.name + " is building a " + house.getType() + " house.");
 	}
 }

@@ -12,7 +12,7 @@ public class Doctor extends Profession {
 	* @param patient
 	*/
 	public void treat(Patient patient) {
-		System.out.println("Doctor Alex is treating patient Max.");
+		System.out.println("Doctor " + this.name + " is treating patient" + patient.getName() + ".");
 	}
 	
 	/**

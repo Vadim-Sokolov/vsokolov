@@ -12,6 +12,6 @@ public class Teacher extends Profession {
 	* @param student
 	*/
 	public void teach(Student student) {
-		System.out.println("Teacher Clayton is teaching a student Carter.");
+		System.out.println("Teacher " + this.name + " is teaching a student " + student.getName() + ".");
 	}
 }
