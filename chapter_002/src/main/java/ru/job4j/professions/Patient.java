@@ -9,5 +9,7 @@ public class Patient {
 	
 	public String name;
 	
-	public String getName();
+	public String getName() { 
+		return this.name;
+	}
 }
