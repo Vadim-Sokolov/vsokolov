@@ -19,7 +19,6 @@ public class Tracker {
 	* @param item новая заявка
 	*/
 	public Item add(Item item) {
-		item.setId(this.generateId());
 		this.items[this.position++] = item;
 		return item;
 	}
@@ -40,9 +39,11 @@ public class Tracker {
 	*/
 	public void delete(String id) {
 		Item target = this.findById(id);
+		if (target != null) {
 		int indexOfTarget = Arrays.asList(this.items).indexOf(target);
 		System.arraycopy(this.items, indexOfTarget + 1, this.items, indexOfTarget,
 			this.items.length - indexOfTarget);
+		}
 	}
 	
 	/**
@@ -81,7 +82,7 @@ public class Tracker {
     public Item findById(String id) {
 		Item result = null;
 		for (Item item : this.items) {
-			if (item.getId().equals(id)) {
+			if (item != null && item.getId().equals(id)) {
 				result = item;
 				break;
 			}
@@ -93,7 +94,7 @@ public class Tracker {
 	* Метод генерирует уникальный ключ для заявки.
 	* @return Уникальный ключ.
 	*/
-	private String generateId() {
+	protected String generateId() {
 		return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
 	}
 }

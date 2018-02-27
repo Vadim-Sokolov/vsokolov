@@ -28,4 +28,13 @@ public class Item {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	public void print() {
+		System.out.println("Item: " + this.name 
+		+ " " + this.message + " " + this.id);
+	}
 }
