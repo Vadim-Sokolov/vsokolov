@@ -34,7 +34,7 @@ public class Item {
 	}
 	
 	public void print() {
-		System.out.println("Item: " + this.name 
-		+ " " + this.message + " " + this.id);
+		System.out.println("\nItem Name:" + this.name 
+		+ "\nItem Message: " + this.message + "\nItem id: " + this.id + "\n=======");
 	}
 }

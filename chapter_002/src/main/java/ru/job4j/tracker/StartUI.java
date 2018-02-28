@@ -77,13 +77,13 @@ public class StartUI {
      * Метод реализует добавленяи новый заявки в хранилище.
      */
     private void createItem() {
-        System.out.println("------------ Добавление новой языки --------------");
+        System.out.println("------------ Add new item --------------\n");
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
         String id = this.tracker.generateId();
 		Item item = new Item(name, desc, id);
         this.tracker.add(item);
-        System.out.println("------------ Новая заявка с Id : " + item.getId() + "-----------");
+        System.out.println("------------ New Item Id : " + item.getId() + "-----------");
     }
 
 	private void showItems() {
@@ -135,7 +135,7 @@ public class StartUI {
 			"0. Add new Item\n" 
 			+ "1. Show all items\n" 
 			+ "2. Edit item\n" 
-			+ "3. Delete item" 
+			+ "3. Delete item\n" 
 			+ "4. Find item by Id\n" 
 			+ "5. Find items by name\n" 
 			+ "6. Exit Program"
