@@ -80,7 +80,7 @@ public class Tracker {
 	* param@ id - given id.
 	*/
     public Item findById(String id) {
-		Item result = null;
+		Item result = new Item("Not found", "---", "---");
 		for (Item item : this.items) {
 			if (item != null && item.getId().equals(id)) {
 				result = item;

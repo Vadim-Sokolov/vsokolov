@@ -21,6 +21,10 @@ public class Item {
 		return this.name;
 	}
 	
+	public String getMessage() {
+		return this.message;
+	}
+	
 	public String getId() {
 		return this.id;
 	}

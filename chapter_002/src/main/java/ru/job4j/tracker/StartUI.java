@@ -15,7 +15,7 @@ public class StartUI {
     private static final String FINDBYNAME = "5";
     private static final String EXIT = "6";
   
-    private final ConsoleInput input;
+    private final Input input;
     private final Tracker tracker;
 
     /**
@@ -23,7 +23,7 @@ public class StartUI {
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
-    public StartUI(ConsoleInput input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
@@ -130,7 +130,7 @@ public class StartUI {
 	}
 	
     private void showMenu() {
-        System.out.println("Меню.");
+        System.out.println("Меню.\n");
         System.out.println(
 			"0. Add new Item\n" 
 			+ "1. Show all items\n" 
