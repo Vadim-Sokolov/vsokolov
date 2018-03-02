@@ -3,6 +3,10 @@ package ru.job4j.tracker;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import org.junit.After;
+import org.junit.Before;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 /**
  * @author vsokolov
@@ -10,6 +14,21 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class StartUITest {
+	
+	private final PrintStream standardOut = System.out;
+	private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+	
+	@Before
+	public void loadOut() {
+		System.out.println("Execute before method");
+		System.setOut(new PrintStream(this.out));
+	}
+	
+	@After
+	public void loadStandard() {
+		System.setOut(this.standardOut);
+		System.out.println("Execute after method");
+	}
 	
 	@Test
 	public void whenUserAddItemTrackerHasItemWithSameName() {
@@ -37,4 +56,52 @@ public class StartUITest {
 		new StartUI(input, tracker).init();
 		assertThat(tracker.findAll().length, is("1"));
 	}*/
+	
+	@Test
+	public void whenShowItems() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item("1", "2", "3L"));
+		tracker.add(new Item("4", "5", "6L"));
+		Input input = new StubInput(new String[] {"1", "6"});
+		new StartUI(input, tracker).showItems();
+		assertThat(new String(this.out.toByteArray()),
+			is(new StringBuilder()
+			.append(tracker.items[0].toStr())
+			.append("\r\n")
+			.append(tracker.items[1].toStr())
+			.append("\r\n")
+			.toString()));
+	}
+	
+	@Test
+	public void whenFindById() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item("1", "2", "3L"));
+		tracker.add(new Item("4", "5", "6L"));
+		Input input = new StubInput(new String[] {"3L"});
+		new StartUI(input, tracker).findById();
+		assertThat(new String(this.out.toByteArray()),
+			is(new StringBuilder()
+			.append("Found ")
+			.append(tracker.items[0].toStr())
+			.append("\r\n")
+			.toString()));
+	}
+	
+	@Test
+	public void whenFindByName() {
+		Tracker tracker = new Tracker();
+		tracker.add(new Item("1", "2", "3L"));
+		tracker.add(new Item("1", "5", "6L"));
+		Input input = new StubInput(new String[] {"1"});
+		new StartUI(input, tracker).findByName();
+		assertThat(new String(this.out.toByteArray()),
+			is(new StringBuilder()
+			.append("Found ")
+			.append(tracker.items[0].toStr())
+			.append("\r\n")
+			.append(tracker.items[1].toStr())
+			.append("\r\n")
+			.toString()));
+	}
 }
