@@ -1,6 +1,8 @@
 package ru.job4j.pseudo;
 
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import java.io.ByteArrayOutputStream;
@@ -13,13 +15,32 @@ import java.io.PrintStream;
  */
 public class PaintTest {
 	
+	private final PrintStream standardOut = System.out;
+	private final ByteArrayOutputStream baosOut = new ByteArrayOutputStream();
+	
+	@Before
+	public void loadOut() {
+		System.out.println("Execute before method");
+		System.setOut(new PrintStream(this.baosOut));
+	}
+	
+	@After
+	public void loadStandard() {
+		System.setOut(this.standardOut);
+		System.out.println("Execute after method");
+	}
+	
 	@Test
 	public void whenDrawSquare() {
-		PrintStream stdOut = System.out;
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(baos));
 		new Paint().draw(new Square());
-		assertThat(new String(baos.toByteArray()), 
+		assertThat(new String(this.baosOut.toByteArray()), 
 			is("++++\n++++\n++++\n++++\n\r\n"));
+	}
+	
+	@Test
+	public void whenDrawTriangle() {
+		new Paint().draw(new Triangle());
+		assertThat(new String(this.baosOut.toByteArray()), 
+			is("\n+\n++\n+++\n++++\n\r\n"));
 	}
 }
