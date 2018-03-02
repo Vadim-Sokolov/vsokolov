@@ -10,7 +10,7 @@ import java.lang.System;
  */
 public class Tracker {
 
-	private final Item[] items = new Item[100];
+	protected final Item[] items = new Item[100];
 	private int position = 0;
 	private static final Random RN = new Random();
 
@@ -72,7 +72,7 @@ public class Tracker {
 				result[resultPosition++] = item;
 			}
 		}
-		return Arrays.copyOfRange(result, 0, resultPosition - 1);
+		return Arrays.copyOfRange(result, 0, resultPosition);
 	}
 	
 	/**

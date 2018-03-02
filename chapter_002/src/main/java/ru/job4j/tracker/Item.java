@@ -41,4 +41,10 @@ public class Item {
 		System.out.println("\nItem Name:" + this.name 
 		+ "\nItem Message: " + this.message + "\nItem id: " + this.id + "\n=======");
 	}
+	
+	public String toStr() {
+		String result = "\nItem Name:" + this.name 
+		+ "\nItem Message: " + this.message + "\nItem id: " + this.id + "\n=======";
+		return result;
+	}
 }

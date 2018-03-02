@@ -86,7 +86,7 @@ public class StartUI {
         System.out.println("------------ New Item Id : " + item.getId() + "-----------");
     }
 
-	private void showItems() {
+	protected void showItems() {
 		Item[] target = this.tracker.findAll();
 		for (Item item : target) {
 			item.print();
@@ -113,14 +113,14 @@ public class StartUI {
 		System.out.println("Item deleted");
 	}
 	
-	private void findById() {
+	protected void findById() {
 		String id = this.input.ask("Please enter item id");
 		Item target = this.tracker.findById(id);
 		System.out.print("Found ");
 		target.print();
 	}
 	
-	private void findByName() {
+	protected void findByName() {
 		String name = this.input.ask("Please enter item name");
 		Item[] target = this.tracker.findByName(name);
 		System.out.println("Found ");
