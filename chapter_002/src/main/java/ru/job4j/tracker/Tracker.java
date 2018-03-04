@@ -42,7 +42,7 @@ public class Tracker {
 		if (target != null) {
 		int indexOfTarget = Arrays.asList(this.items).indexOf(target);
 		System.arraycopy(this.items, indexOfTarget + 1, this.items, indexOfTarget,
-			this.items.length - indexOfTarget);
+			this.items.length - indexOfTarget - 1);
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class Tracker {
 		Item[] result = new Item[this.items.length];
 		int resultPosition = 0;
 		for (Item item : this.items) {
-			if (item.getName().equals(key)) {
+			if (item != null && item.getName().equals(key)) {
 				result[resultPosition++] = item;
 			}
 		}
@@ -80,7 +80,7 @@ public class Tracker {
 	* param@ id - given id.
 	*/
     public Item findById(String id) {
-		Item result = new Item("Not found", "---", "---");
+		Item result = null;
 		for (Item item : this.items) {
 			if (item != null && item.getId().equals(id)) {
 				result = item;

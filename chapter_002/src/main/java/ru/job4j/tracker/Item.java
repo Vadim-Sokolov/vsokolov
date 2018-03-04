@@ -43,7 +43,7 @@ public class Item {
 	}
 	
 	public String toStr() {
-		String result = "\nItem Name:" + this.name 
+		String result = "\nItem Name: " + this.name 
 		+ "\nItem Message: " + this.message + "\nItem id: " + this.id + "\n=======";
 		return result;
 	}
