@@ -33,7 +33,7 @@ public class PaintTest {
 	@Test
 	public void whenDrawSquare() {
 		new Paint().draw(new Square());
-		assertThat(new String(this.baosOut.toByteArray()), 
+		assertThat(this.baosOut.toString(), 
 			is("++++" + System.getProperty("line.separator")
 			+ "++++" + System.getProperty("line.separator")
 			+ "++++" + System.getProperty("line.separator")
@@ -44,7 +44,7 @@ public class PaintTest {
 	@Test
 	public void whenDrawTriangle() {
 		new Paint().draw(new Triangle());
-		assertThat(new String(this.baosOut.toByteArray()), 
+		assertThat(this.baosOut.toString(), 
 			is(System.getProperty("line.separator")
 			+ "+" + System.getProperty("line.separator")
 			+ "++" + System.getProperty("line.separator")
