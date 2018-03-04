@@ -47,15 +47,15 @@ public class StartUITest {
 		assertThat(tracker.findAll() [0].getMessage(), is("message"));
 	}
 	
-	/*@Test
+	@Test
 	public void whenDeleteItemItemsHasLength1() {
 		Tracker tracker = new Tracker();
 		tracker.add(new Item("1", "2", "3L"));
 		tracker.add(new Item("4", "5", "6L"));
 		Input input = new StubInput(new String[] {"3", "3L", "6"});
 		new StartUI(input, tracker).init();
-		assertThat(tracker.findAll().length, is("1"));
-	}*/
+		assertThat(tracker.findAll().length, is(1));
+	}
 	
 	@Test
 	public void whenShowItems() {
@@ -98,7 +98,8 @@ public class StartUITest {
 		assertThat(new String(this.out.toByteArray()),
 			is(new StringBuilder()
 			.append("Found ")
-			.append("\nItem Name: 1\nItem Message: 2\nItem id: 3L\n=======")
+			.append("\r\n")
+			.append(tracker.items[0].toStr())
 			.append("\r\n")
 			.append("\nItem Name: 1\nItem Message: 5\nItem id: 6L\n=======")
 			.append("\r\n")
