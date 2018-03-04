@@ -14,6 +14,11 @@ public class TriangleTest {
 	@Test
 	public void whenDrawTriangle() {
 		Triangle triangle = new Triangle();
-		assertThat(triangle.draw(), is("\n+\n++\n+++\n++++\n"));
+		assertThat(triangle.draw(), 
+		is(System.getProperty("line.separator")
+		+ "+" + System.getProperty("line.separator")
+		+ "++" + System.getProperty("line.separator")
+		+ "+++" + System.getProperty("line.separator")
+		+ "++++" + System.getProperty("line.separator")));
 	}
 }

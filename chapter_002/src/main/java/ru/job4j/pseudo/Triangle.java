@@ -14,7 +14,7 @@ public class Triangle implements Shape {
 			for (int j = 0; j < i; j++) {
 				pic.append("+");
 			}
-			pic.append("\n");
+			pic.append(System.getProperty("line.separator"));
 		}
 		return pic.toString();
 	}

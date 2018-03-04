@@ -34,13 +34,22 @@ public class PaintTest {
 	public void whenDrawSquare() {
 		new Paint().draw(new Square());
 		assertThat(new String(this.baosOut.toByteArray()), 
-			is("++++\n++++\n++++\n++++\n\r\n"));
+			is("++++" + System.getProperty("line.separator")
+			+ "++++" + System.getProperty("line.separator")
+			+ "++++" + System.getProperty("line.separator")
+			+ "++++" + System.getProperty("line.separator")
+			+ "\r\n"));
 	}
 	
 	@Test
 	public void whenDrawTriangle() {
 		new Paint().draw(new Triangle());
 		assertThat(new String(this.baosOut.toByteArray()), 
-			is("\n+\n++\n+++\n++++\n\r\n"));
+			is(System.getProperty("line.separator")
+			+ "+" + System.getProperty("line.separator")
+			+ "++" + System.getProperty("line.separator")
+			+ "+++" + System.getProperty("line.separator")
+			+ "++++" + System.getProperty("line.separator")
+			+ "\r\n"));
 	}
 }

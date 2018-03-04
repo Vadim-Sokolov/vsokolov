@@ -14,6 +14,10 @@ public class SquareTest {
 	@Test
 	public void whenDrawSquare() {
 		Square square = new Square();
-		assertThat(square.draw(), is("++++\n++++\n++++\n++++\n"));
+		assertThat(square.draw(), 
+		is("++++" + System.getProperty("line.separator")
+		+ "++++" + System.getProperty("line.separator")
+		+ "++++" + System.getProperty("line.separator")
+		+ "++++" + System.getProperty("line.separator")));
 	}
 }

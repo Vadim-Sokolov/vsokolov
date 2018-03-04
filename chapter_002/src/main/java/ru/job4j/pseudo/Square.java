@@ -11,7 +11,7 @@ public class Square implements Shape {
 	public String draw() {
 		StringBuilder pic = new StringBuilder();
 		for (int i = 0; i < 4; i++) {
-			pic.append("++++\n");
+			pic.append("++++" + System.getProperty("line.separator"));
 		}
 		return pic.toString();
 	}
