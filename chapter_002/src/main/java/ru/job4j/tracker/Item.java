@@ -38,13 +38,21 @@ public class Item {
 	}
 	
 	public void print() {
-		System.out.println("\nItem Name: " + this.name 
-		+ "\nItem Message: " + this.message + "\nItem id: " + this.id + "\n=======");
+		System.out.println(System.getProperty("line.separator")
+			+ "Item Name: " + this.name 
+			+ System.getProperty("line.separator")
+			+ "Item Message: " + this.message + System.getProperty("line.separator")
+			+ "Item id: " + this.id + System.getProperty("line.separator")
+			+ "=======");
 	}
 	
 	public String toStr() {
-		String result = "\nItem Name: " + this.name 
-		+ "\nItem Message: " + this.message + "\nItem id: " + this.id + "\n=======";
+		String result = System.getProperty("line.separator")
+			+ "Item Name: " + this.name 
+			+ System.getProperty("line.separator")
+			+ "Item Message: " + this.message + System.getProperty("line.separator")
+			+ "Item id: " + this.id + System.getProperty("line.separator")
+			+ "=======";
 		return result;
 	}
 }
