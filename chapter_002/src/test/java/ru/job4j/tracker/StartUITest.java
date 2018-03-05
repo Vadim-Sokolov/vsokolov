@@ -64,7 +64,7 @@ public class StartUITest {
 		tracker.add(new Item("4", "5", "6L"));
 		Input input = new StubInput(new String[] {"1", "6"});
 		new StartUI(input, tracker).showItems();
-		assertThat(new String(this.out.toByteArray()),
+		assertThat(this.out.toString(),
 			is(new StringBuilder()
 			.append(tracker.items[0].toStr())
 			.append(System.getProperty("line.separator"))
@@ -80,7 +80,7 @@ public class StartUITest {
 		tracker.add(new Item("4", "5", "6L"));
 		Input input = new StubInput(new String[] {"3L"});
 		new StartUI(input, tracker).findById();
-		assertThat(new String(this.out.toByteArray()),
+		assertThat(this.out.toString(),
 			is(new StringBuilder()
 			.append("Found ")
 			.append(tracker.items[0].toStr())
@@ -95,7 +95,7 @@ public class StartUITest {
 		tracker.add(new Item("1", "5", "6L"));
 		Input input = new StubInput(new String[] {"1"});
 		new StartUI(input, tracker).findByName();
-		assertThat(new String(this.out.toByteArray()),
+		assertThat(this.out.toString(),
 			is(new StringBuilder()
 			.append("Found ")
 			.append(System.getProperty("line.separator"))
