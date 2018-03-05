@@ -66,10 +66,10 @@ public class StartUITest {
 		new StartUI(input, tracker).showItems();
 		assertThat(new String(this.out.toByteArray()),
 			is(new StringBuilder()
-			.append("\nItem Name: 1\nItem Message: 2\nItem id: 3L\n=======")
-			.append("\r\n")
-			.append("\nItem Name: 4\nItem Message: 5\nItem id: 6L\n=======")
-			.append("\r\n")
+			.append(tracker.items[0].toStr())
+			.append(System.getProperty("line.separator"))
+			.append(tracker.items[1].toStr())
+			.append(System.getProperty("line.separator"))
 			.toString()));
 	}
 	
@@ -83,8 +83,8 @@ public class StartUITest {
 		assertThat(new String(this.out.toByteArray()),
 			is(new StringBuilder()
 			.append("Found ")
-			.append("\nItem Name: 1\nItem Message: 2\nItem id: 3L\n=======")
-			.append("\r\n")
+			.append(tracker.items[0].toStr())
+			.append(System.getProperty("line.separator"))
 			.toString()));
 	}
 	
@@ -98,11 +98,11 @@ public class StartUITest {
 		assertThat(new String(this.out.toByteArray()),
 			is(new StringBuilder()
 			.append("Found ")
-			.append("\r\n")
+			.append(System.getProperty("line.separator"))
 			.append(tracker.items[0].toStr())
-			.append("\r\n")
-			.append("\nItem Name: 1\nItem Message: 5\nItem id: 6L\n=======")
-			.append("\r\n")
+			.append(System.getProperty("line.separator"))
+			.append(tracker.items[1].toStr())
+			.append(System.getProperty("line.separator"))
 			.toString()));
 	}
 }
