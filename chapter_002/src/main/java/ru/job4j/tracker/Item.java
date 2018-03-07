@@ -38,12 +38,7 @@ public class Item {
 	}
 	
 	public void print() {
-		System.out.println(System.getProperty("line.separator")
-			+ "Item Name: " + this.name 
-			+ System.getProperty("line.separator")
-			+ "Item Message: " + this.message + System.getProperty("line.separator")
-			+ "Item id: " + this.id + System.getProperty("line.separator")
-			+ "=======");
+		System.out.println(this.toStr());
 	}
 	
 	public String toStr() {
