@@ -6,14 +6,6 @@ package ru.job4j.tracker;
  * @since 0.1
  */
 public class StartUI {
-	
-    private static final String ADD = "0";
-    private static final String SHOW = "1";
-    private static final String EDIT = "2";
-    private static final String DELETE = "3";
-    private static final String FINDBYID = "4";
-    private static final String FINDBYNAME = "5";
-    private static final String EXIT = "6";
   
     private final Input input;
     private final Tracker tracker;
@@ -35,17 +27,19 @@ public class StartUI {
 		MenuTracker menu = new MenuTracker(this.input, this.tracker);
 		boolean exit = false;
         menu.fillActions();
+		int[] range = new int[menu.getActionsLength()];
+		for (int i = 0; i < range.length; i++) {
+			range[i] = i;
+		}
 		do {
 			menu.show();
-			int key = Integer.valueOf(input.ask("Please select action: "));
+			int key = input.ask("Please select action: ", range);
 			if (key == 6) {
 				exit = true;
 				break;
-			} else if (key > -1 && key < menu.getActionsLength()) {
-				menu.select(key);
 			} else {
-				System.out.println("Action not found, please try again.");
-			}
+				menu.select(key);
+			} 
 		} while (!exit);
     }
 
@@ -54,6 +48,6 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
