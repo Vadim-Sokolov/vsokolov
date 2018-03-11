@@ -30,7 +30,7 @@ public class StartUITest {
 		System.out.println("Execute after method");
 	}
 	
-	@Test
+	/*@Test
 	public void whenUserAddItemTrackerHasItemWithSameName() {
 		Tracker tracker = new Tracker();
 		Input input = new StubInput(new String[] {"0", "test name", "message", "6"});
@@ -104,5 +104,5 @@ public class StartUITest {
 			.append(tracker.items[1].toStr())
 			.append(System.getProperty("line.separator"))
 			.toString()));
-	}
+	}*/
 }
