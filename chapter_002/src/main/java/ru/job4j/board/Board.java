@@ -12,7 +12,7 @@ public class Board {
 	public void add(Figure figure) {
 	}
 	
-	public boolean move(Cell source, Cell dest) 
+	/*public boolean move(Cell source, Cell dest) 
 		throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
 			if (!source.isOccupied()) {
 			throw new FigureNotFoundException();
@@ -23,6 +23,6 @@ public class Board {
 			} else {
 				Figure figure.copy(dest);
 			}
-		}
+		}*/
 }
 		
