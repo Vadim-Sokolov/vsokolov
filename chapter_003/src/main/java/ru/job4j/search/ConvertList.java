@@ -11,6 +11,20 @@ import java.util.List;
 public class ConvertList {
 
     /**
+     * Method takes list of arrays and adds all elements to a list
+     * @param list - list to be converted
+     * @return List<Integer> - result
+     */
+    public List<Integer> convert(List<int[]> list){
+        List<Integer> result = new ArrayList<>();
+        for (int[] arr : list) {
+            for (int a : arr) {
+                result.add(a);
+            }
+        }
+        return result;
+    }
+    /**
      * Method takes a two dimentional array of int,
      * and converts them to a List<Integer>
      * @param array - array to be converted
