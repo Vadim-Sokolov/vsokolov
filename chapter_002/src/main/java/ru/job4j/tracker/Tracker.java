@@ -10,7 +10,7 @@ import java.lang.System;
  */
 public class Tracker {
 
-	protected final Item[] items = new Item[100];
+	protected final List<Item> items = new ArrayList<>();
 	private int position = 0;
 	private static final Random RN = new Random();
 
@@ -19,7 +19,7 @@ public class Tracker {
 	* @param item новая заявка
 	*/
 	public Item add(Item item) {
-		this.items[this.position++] = item;
+		this.items.add(item);
 		return item;
 	}
 	
@@ -29,50 +29,37 @@ public class Tracker {
 	*/
     public void replace(String id, Item item) {
 		Item target = this.findById(id);
-		int indexOfTarget = Arrays.asList(this.items).indexOf(target);
-		items[indexOfTarget] = item;
+		this.items.remove(this.findById(id));
+		this.items.add(item);
 	}
 	
 	/**
 	* Method deletes an item from the array.
-	* @param item - to delete
+	* @param id - to delete
 	*/
 	public void delete(String id) {
-		Item target = this.findById(id);
-		if (target != null) {
-		int indexOfTarget = Arrays.asList(this.items).indexOf(target);
-		System.arraycopy(this.items, indexOfTarget + 1, this.items, indexOfTarget,
-			this.items.length - indexOfTarget - 1);
-		}
+		this.items.remove(this.findById(id));
 	}
 	
 	/**
 	* Method returns a list of all the items.
 	*/
-	public Item[] findAll() {
-		int index = this.items.length - 1;
-		for (Item item : this.items) {
-			if (item == null) {
-				index = Arrays.asList(this.items).indexOf(item);
-				break;
-			}
-		}
-		return Arrays.copyOfRange(this.items, 0, index);
+	public List<Item> findAll() {
+		return this.items;
 	}
 	
 	/**
 	* Method returns a list of all the items with a given name.
 	* param@ key - given name.
 	*/
-	public Item[] findByName(String key) {
-		Item[] result = new Item[this.items.length];
-		int resultPosition = 0;
+	public List<Item> findByName(String key) {
+		List<Item> result = new ArrayList<>();
 		for (Item item : this.items) {
-			if (item != null && item.getName().equals(key)) {
-				result[resultPosition++] = item;
+			if (item.getName().equals(key)) {
+				result.add(item);
 			}
 		}
-		return Arrays.copyOfRange(result, 0, resultPosition);
+		return result;
 	}
 	
 	/**
@@ -82,7 +69,7 @@ public class Tracker {
     public Item findById(String id) {
 		Item result = null;
 		for (Item item : this.items) {
-			if (item != null && item.getId().equals(id)) {
+			if (item.getId().equals(id)) {
 				result = item;
 				break;
 			}
