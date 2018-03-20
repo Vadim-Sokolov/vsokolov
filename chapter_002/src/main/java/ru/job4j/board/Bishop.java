@@ -37,7 +37,8 @@ public class Bishop extends Figure {
 			throw new ImpossibleMoveException();
 		}
 	}
-	
+
+	@Override
 	public boolean isMovePossible(Cell start, Cell dest) {
 		return (Math.abs(start.getX() - dest.getX())) == (Math.abs(start.getY() - dest.getY()));
 	}

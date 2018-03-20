@@ -17,4 +17,8 @@ public abstract class Figure {
 	abstract Cell[] way(Cell start, Cell dest) throws ImpossibleMoveException;
 	
 	abstract Figure copy(Cell dest);
+
+	abstract boolean isMovePossible(Cell start, Cell dest);
+
+	abstract Cell getPosition();
 }
