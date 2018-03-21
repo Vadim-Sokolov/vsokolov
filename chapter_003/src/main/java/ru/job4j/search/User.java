@@ -24,6 +24,9 @@ public class User implements Comparable<User> {
     public int getId() {
         return id;
     }
+    public String getName() {
+        return name;
+    }
 
     @Override
     public int compareTo(User o) {
