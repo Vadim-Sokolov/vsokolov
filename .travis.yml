@@ -7,7 +7,9 @@ sudo: false
 # Здесь используется сторонни сервис https://codecov.io/
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
+env:
+  global:
+    - CODECOV_TOKEN=:af59f8a5-c702-4cae-a104-5c6806e8c3eb
 # Отправлять уведомление на почту vadim.sokolov@gmail.com (Изменить на свою) если сборка упала
 notifications:
   email:
