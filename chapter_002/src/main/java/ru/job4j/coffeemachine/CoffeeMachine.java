@@ -18,6 +18,7 @@ public class CoffeeMachine {
         for (int i = 0; i < coins.length; i++) {
             number = change / coins[i];
             target[i] = number;
+            change -= number * coins[i];
         }
 
         for (int i : target) {
