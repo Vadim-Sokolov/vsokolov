@@ -36,7 +36,7 @@ public class Account {
         return otvet;
     }
 
-    public boolean equals(Object o) {
+    public boolean equals(Object o) { // множественный return
         if (this == o) {
             return true;
         }

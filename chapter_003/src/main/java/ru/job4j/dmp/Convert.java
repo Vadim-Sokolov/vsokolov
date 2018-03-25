@@ -23,6 +23,7 @@ public class Convert {
 
 
     //Converts list to array
+    // неправильный формат комментариев
     public int[][] makeArray(List<Integer> list, int rws) { // назвать rows
         Iterator<Integer> iterator = list.iterator();
         int cls = list.size() / rws + (list.size() % rws == 0 ? 0 : 1);
