@@ -12,15 +12,14 @@ public class CoffeeMachine {
      */
     public int[] change(int value, int price) {
         int change = value - price;
-        int tenCoins = change / 10;
-        int remainderBy10 = change - 10 * tenCoins;
-        int fiveCoins = remainderBy10 / 5;
-        int remainderBy5 = remainderBy10 - 5 * fiveCoins;
-        int twoCoins = remainderBy5 / 2;
-        int remainderBy2 = remainderBy5 - 2 * twoCoins;
-        int oneCoins = remainderBy2;
-        int[] target = {tenCoins, fiveCoins, twoCoins, oneCoins};
+        int[] target = new int[4];
+        int number;
         int size = 0;
+        for (int i = 0; i < coins.length; i++) {
+            number = change / coins[i];
+            target[i] = number;
+        }
+
         for (int i : target) {
             if (i != 0) {
                 size++;
