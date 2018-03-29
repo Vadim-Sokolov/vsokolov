@@ -28,7 +28,7 @@ public class Bishop extends Figure {
 		if (isMovePossible(start, dest)) {
 		Cell[] result = new Cell[Math.abs(start.getX() - dest.getX())];
 		int position = 0;
-			for (int i = start.getX(), j = start.getY(); i < dest.getX(); i++, j++) {
+			for (int i = start.getX() + 1, j = start.getY() + 1; i <= dest.getX(); i++, j++) {
 				Cell add = new Cell(i, j);
 				result[position++] = add;
 			}
