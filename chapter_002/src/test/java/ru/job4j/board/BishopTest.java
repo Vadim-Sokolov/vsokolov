@@ -11,12 +11,6 @@ public class BishopTest {
     private final Bishop bish = new Bishop(start);
 
     @Test
-    public void isStartGreaterThanDestTest() {
-        assertThat(bish.isStartGreaterThanDest(start.getX(), dest.getX()), is(false));
-    }
-
-
-    @Test
     public void wayTest() throws ImpossibleMoveException {
         assertThat(bish.way(start, dest)[0].getX(), is(2));
     }
