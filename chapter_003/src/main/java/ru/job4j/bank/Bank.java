@@ -48,7 +48,7 @@ public class Bank {
     }
 
     public User getUserByPassport(String passport) {
-        User result = new User("not found", "not found");
+        User result = null;
         for (Map.Entry<User, ArrayList<Account>> entry : this.treemap.entrySet()) {
             User key = entry.getKey();
             if (key.getPassport().equals(passport)) {
@@ -59,7 +59,7 @@ public class Bank {
     }
 
     public Account getAccountByRequisites(String requisites) {
-        Account result = new Account(0, "not found");
+        Account result = null;
         for (Map.Entry<User, ArrayList<Account>> entry : this.treemap.entrySet()) {
             for (Account acc : entry.getValue()) {
                 if (acc.getRequisites().equals(requisites)) {

@@ -7,8 +7,8 @@ package ru.job4j.bank;
  */
 public class Account {
 
-    double value;
-    String requisites;
+    private double value;
+    private String requisites;
 
     public Account(double value, String requisites) {
         this.value = value;
