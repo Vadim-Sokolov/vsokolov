@@ -14,7 +14,7 @@ public class Board {
 	
 	public boolean move(Cell source, Cell dest)
 		throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-			if (!source.isOccupied()) {
+			if (getFigure(source) == null) {
 			throw new FigureNotFoundException();
 			} else if (!(getFigure(source).isMovePossible(source, dest))) {
 				throw new ImpossibleMoveException();
@@ -35,7 +35,7 @@ public class Board {
 	public boolean isPathClear(Cell[] cells) {
 		boolean result = true;
 		for (Cell c : cells) {
-			if (c.isOccupied()) {
+			if (getFigure(c) == null) {
 				result = false;
 			}
 		}

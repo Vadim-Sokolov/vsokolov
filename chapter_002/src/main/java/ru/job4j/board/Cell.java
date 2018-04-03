@@ -9,17 +9,10 @@ public class Cell {
 	
 	private int x;
 	private int y;
-	private boolean occupied;
 	
 	public Cell(int x, int y) {
 		this.x = x;
 		this.y = y;
-	}
-	
-	public Cell(int x, int y, boolean occupied) {
-		this.x = x;
-		this.y = y;
-		this.occupied = occupied;
 	}
 	
 	public int getX() {
@@ -28,9 +21,5 @@ public class Cell {
 	
 	public int getY() {
 		return this.y;
-	}
-	
-	public boolean isOccupied() {
-		return this.occupied;
 	}
 }

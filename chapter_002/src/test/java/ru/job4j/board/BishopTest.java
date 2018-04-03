@@ -6,8 +6,8 @@ import static org.hamcrest.core.Is.is;
 
 public class BishopTest {
 
-    private final Cell start = new Cell(1, 1, true);
-    private final Cell dest = new Cell(2, 2, false);
+    private final Cell start = new Cell(1, 1);
+    private final Cell dest = new Cell(2, 2);
     private final Bishop bish = new Bishop(start);
 
     @Test
@@ -24,10 +24,5 @@ public class BishopTest {
     @Test
     public void isMovePossibleTest() {
         assertThat(bish.isMovePossible(start, dest), is(true));
-    }
-
-    @Test
-    public void isPathClear() throws ImpossibleMoveException {
-        assertThat(bish.isPathClear(bish.way(start, dest)), is(true));
     }
 }

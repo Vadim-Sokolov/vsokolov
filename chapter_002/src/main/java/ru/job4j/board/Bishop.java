@@ -19,10 +19,6 @@ public class Bishop extends Figure {
              return new Bishop(dest);
          }
 	
-	public boolean isStartGreaterThanDest(int a, int b) {
-		return (a > b) ? true : false;
-	}
-	
 	@Override
 	public Cell[] way(Cell start, Cell dest) throws ImpossibleMoveException {
 		if (isMovePossible(start, dest)) {
@@ -41,15 +37,6 @@ public class Bishop extends Figure {
 	@Override
 	public boolean isMovePossible(Cell start, Cell dest) {
 		return (Math.abs(start.getX() - dest.getX())) == (Math.abs(start.getY() - dest.getY()));
-	}
-	
-	public boolean isPathClear(Cell[] target) {
-		boolean result = true;
-		for (Cell cell : target) {
-			if (cell.isOccupied()) {
-				result = false;
-			}
-		} return result;
 	}
 		
 	public Cell getPosition() {
