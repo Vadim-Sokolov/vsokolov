@@ -12,7 +12,7 @@ public class CoffeeMachineTest {
         CoffeeMachine cm = new CoffeeMachine();
         int[] result = cm.change(20, 5);
         assertThat(result.length, is(2));
-        assertThat(result[1], is(1));
+        assertThat(result[1], is(5));
     }
 
     @Test
