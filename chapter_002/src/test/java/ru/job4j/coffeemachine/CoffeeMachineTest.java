@@ -21,4 +21,12 @@ public class CoffeeMachineTest {
         boolean result = cm.isEnough(20, 5);
         assertThat(result, is(true));
     }
+
+    @Test
+    public void rec() {
+        CoffeeMachine cm = new CoffeeMachine();
+        int[] result = cm.change(100, 37);
+        int[] expected = new int[]{60, 2, 1};
+        assertThat(result, is(expected));
+    }
 }
