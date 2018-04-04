@@ -15,3 +15,5 @@ notifications:
       - vadim.sokolov@gmail.com
     on_success: never # default: change
     on_failure: never # default: always
+
+install: /bin/true
