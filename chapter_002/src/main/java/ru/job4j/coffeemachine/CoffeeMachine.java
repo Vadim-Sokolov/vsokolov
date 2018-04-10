@@ -12,25 +12,21 @@ public class CoffeeMachine {
      */
     public int[] change(int value, int price) {
         int change = value - price;
-        int[] target = new int[4];
-        int number;
+        int position = 0;
+        int p1 = 0;
         int size = 0;
+        int[] target = new int[4];
         for (int i = 0; i < coins.length; i++) {
-            number = change / coins[i];
-            target[i] = number * coins[i];
-            change -= number * coins[i];
-        }
-
-        for (int i : target) {
-            if (i != 0) {
-                size++;
-            }
+            p1 = change / coins[i];
+            change -= p1 * coins[i];
+            target[position++] = p1;
+            size += p1;
         }
         int[] result = new int[size];
-        int position = 0;
-        for (int i : target) {
-            if (i != 0) {
-                result[position++] = i;
+        int position1 = 0;
+        for (int i = 0; i < target.length; i++) {
+            for (int j = 0; j < target[i]; j++) {
+                result[position1++] = coins[i];
             }
         }
         return result;

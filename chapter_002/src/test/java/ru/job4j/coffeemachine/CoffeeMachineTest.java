@@ -25,8 +25,8 @@ public class CoffeeMachineTest {
     @Test
     public void rec() {
         CoffeeMachine cm = new CoffeeMachine();
-        int[] result = cm.change(100, 37);
-        int[] expected = new int[]{60, 2, 1};
+        int[] result = cm.change(100, 32);
+        int[] expected = new int[]{10, 10, 10, 10, 10, 10, 5, 2, 1};
         assertThat(result, is(expected));
     }
 }
