@@ -8,8 +8,10 @@ package ru.job4j.board;
 public class Board {
 	
 	private final Figure[] figures = new Figure[32];
-	
+	private int position = 0;
+
 	public void add(Figure figure) {
+		figures[position++] = figure;
 	}
 	
 	public boolean move(Cell source, Cell dest)
@@ -55,6 +57,10 @@ public class Board {
 			}
 		}
 		return result;
+	}
+
+	public Figure[] getFigures() {
+		return figures;
 	}
 }
 		
