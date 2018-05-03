@@ -1,5 +1,7 @@
 package ru.job4j;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 /**
  * @author vsokolov
@@ -44,21 +46,19 @@ public class DepartmentSort {
      */
     public TreeSet<String> fillMissingDepartments(TreeSet<String> target) {
         TreeSet<String> result = new TreeSet<>();
-        TreeSet<String> missing1 = new TreeSet<>();
-        TreeSet<String> missing2 = new TreeSet<>();
         for (String s : target) {
-            if (s.length() >= 2) {
-                missing1.add(s.substring(0, 2));
+            String[] parts = s.split("\\\\");
+            List<String> missing = new ArrayList<>();
+            missing.add(parts[0]);
+            for (int i = 1; i < parts.length - 1; i++) {
+               String fill = missing.get(i - 1) + "\\" + parts[i];
+               missing.add(fill);
             }
-        }
-        for (String s : target) {
-            if (s.length() >= 6) {
-                missing2.add(s.substring(0, 6));
+            for (String s1 : missing) {
+                result.add(s1);
             }
         }
         result.addAll(target);
-        result.addAll(missing1);
-        result.addAll(missing2);
         return result;
     }
 }
