@@ -1,7 +1,8 @@
-package ru.job4j;
+package ru.job4j.iterators;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.job4j.iterators.ArrayIterator;
 
 import java.util.Iterator;
 
