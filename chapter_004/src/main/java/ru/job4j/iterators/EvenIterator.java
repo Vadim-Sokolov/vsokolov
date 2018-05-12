@@ -30,7 +30,7 @@ public class EvenIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() throws NoSuchElementException {
-        if (hasNext() == false) {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
         int target = search();
