@@ -21,10 +21,8 @@ public class EvenIterator implements Iterator<Integer> {
     public boolean hasNext() {
         boolean result = false;
         if (index < ints.length) {
-            for (int i = index; i < ints.length; i++) {
-                if (ints[i] % 2 == 0) {
-                    result = true;
-                }
+            if (search() >= 0) {
+                result = true;
             }
         }
         return result;
@@ -35,14 +33,18 @@ public class EvenIterator implements Iterator<Integer> {
         if (hasNext() == false) {
             throw new NoSuchElementException();
         }
-        int target = -1;
+        int target = search();
+        index = target + 1;
+        return ints[target];
+    }
+    public Integer search() {
+        int result = -1;
         for (int i = index; i < ints.length; i++) {
             if (ints[i] % 2 == 0) {
-                target = i;
+                result = i;
                 break;
             }
         }
-        index = target + 1;
-        return ints[target];
+        return result;
     }
 }
