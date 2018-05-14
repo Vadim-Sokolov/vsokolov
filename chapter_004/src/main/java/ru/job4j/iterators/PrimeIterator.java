@@ -19,13 +19,7 @@ public class PrimeIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        boolean result = false;
-        if (index < ints.length) {
-            if (search() >= 0) {
-                result = true;
-            }
-        }
-        return result;
+        return (index < ints.length && search() >= 0);
     }
 
     @Override
@@ -38,7 +32,7 @@ public class PrimeIterator implements Iterator<Integer> {
         return ints[target];
     }
 
-    public Integer search() {
+    private Integer search() {
         int result = -1;
         for (int i = index; i < ints.length; i++) {
             if (isPrime(ints[i])) {
@@ -49,7 +43,7 @@ public class PrimeIterator implements Iterator<Integer> {
         return result;
     }
 
-    private static boolean isPrime(int x) {
+    private boolean isPrime(int x) {
         boolean result = true;
         if (x == 0 || x == 1) {
             result = false;
