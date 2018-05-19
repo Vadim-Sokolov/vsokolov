@@ -9,25 +9,38 @@ public abstract class AbstractStore<T extends Base> implements Store {
 
     SimpleArray<T> t;
 
+    public AbstractStore(SimpleArray<T> t) {
+        this.t = t;
+    }
+
     @Override
     public void add(Base model) {
         t.add((T) model);
     }
 
     @Override
-    public boolean replace(String id, Base model) {
-        t.set(Integer.parseInt(id), (T) model);
-        return true;
+    public void replace(String id, Base model) {
+        t.set(getIndex(id), (T) model);
     }
 
     @Override
-    public boolean delete(String id) {
-        t.delete(Integer.parseInt(id));
-        return true;
+    public void delete(String id) {
+        t.delete(getIndex(id));
     }
 
     @Override
-    public Base findById(String id) {
-        return t.get(Integer.parseInt(id));
+    public T findById(String id) {
+        return t.get(getIndex(id));
+    }
+
+    public int getIndex(String id) {
+        int result = -1;
+        for (int i = 0; i < t.getLength(); i++) {
+            if (t.get(i).getId().equals(id)) {
+                result = i;
+                break;
+            }
+        }
+        return result;
     }
 }

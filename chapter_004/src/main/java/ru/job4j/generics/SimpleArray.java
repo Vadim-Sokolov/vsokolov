@@ -32,8 +32,16 @@ public class SimpleArray<T> implements  Iterable<T> {
         this.objects[index] = null;
     }
 
-    public T get(int position) {
-        return (T) this.objects[position];
+    public T get(int position) throws NullPointerException {
+        if ((T) this.objects[position] == null) {
+            throw new NullPointerException();
+        } else {
+            return (T) this.objects[position];
+        }
+    }
+
+    public int getLength() {
+        return objects.length;
     }
 
     @Override
