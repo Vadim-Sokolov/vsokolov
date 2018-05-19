@@ -22,9 +22,6 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method deletes 1st entry in the list.
-     * переопределяются ссылки соседних узлов так, чтобы они указывали друг на друга
-     * обнуляется значение узла, который содержит удаляемый объект,
-     * уменьшается размер коллекции
      */
     public void delete() {
         Node<E> target = this.first;
