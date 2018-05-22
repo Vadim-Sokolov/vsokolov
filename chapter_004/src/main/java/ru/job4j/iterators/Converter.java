@@ -9,31 +9,25 @@ import java.util.*;
  */
 public class Converter {
 
-    Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
+    Iterator<Integer> convert(Iterator<Iterator<Integer>> its) {
         return new Iterator<Integer>() {
 
-            private Iterator<Integer> current;
-            private Iterator<Iterator<Integer>> cursor = it;
+            Iterator<Integer> current;
 
             @Override
             public boolean hasNext() {
-                return cursor.hasNext();
+                if (its.hasNext()) {
+                    current = its.next();
+                }
+                return (its.hasNext());
             }
 
             @Override
             public Integer next() throws NoSuchElementException {
-                int result = -1;
                 if (!hasNext()) {
                     throw new NoSuchElementException();
-                } else {
-                    current = cursor.next();
-                    if (current.hasNext()) {
-                        result = current.next();
-                    } else {
-                       current = cursor.next();
-                    }
                 }
-                return result;
+                return -1;
             }
         };
     }
