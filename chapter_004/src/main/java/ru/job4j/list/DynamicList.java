@@ -10,14 +10,14 @@ import java.util.Iterator;
  */
 public class DynamicList<E> implements Iterable<E> {
 
-    private int size = 100;
-    private Object[] container = new Object[size];
+    private int size;
+    private Object[] container;
     private int index = 0;
     private int modCount = 0;
 
-    public DynamicList(int size, Object[] container) {
+    public DynamicList(int size) {
         this.size = size;
-        this.container = container;
+        this.container = new Object[size];
     }
 
     public void add(E value) {
@@ -45,7 +45,7 @@ public class DynamicList<E> implements Iterable<E> {
         return (Iterator<E>) Arrays.asList(container).iterator();
     }
 
-    public int getSize() {
+    int getSize() {
         return size;
     }
 }

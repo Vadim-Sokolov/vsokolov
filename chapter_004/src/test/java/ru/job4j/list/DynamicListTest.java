@@ -12,10 +12,11 @@ import static org.junit.Assert.*;
  */
 public class DynamicListTest {
 
-    private DynamicList<Integer> list = new DynamicList<>(3, new Object[3]);
+    private DynamicList<Integer> list;
 
     @Before
     public void beforeTest() {
+        list = new DynamicList<>(3);
         list.add(25);
         list.add(26);
         list.add(27);
