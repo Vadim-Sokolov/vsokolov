@@ -17,14 +17,14 @@ public class SimpleLinkedListTest {
     @Before
     public void beforeTest() {
         list = new SimpleLinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
+        list.add(100);
+        list.add(200);
+        list.add(300);
     }
 
     @Test
     public void whenAddThreeElementsThenSecondElementIsTwo() {
-        assertThat(list.get(1), is(2));
+        assertThat(list.get(1), is(200));
     }
 
     @Test
@@ -35,6 +35,13 @@ public class SimpleLinkedListTest {
     @Test
     public void whenDeleteFirstElementThenFirstElementIsTwo() {
         list.delete();
-        assertThat(list.get(0), is(2));
+        assertThat(list.get(0), is(200));
+    }
+
+    @Test
+    public void whenDeleteSecondElementThenSecondElementIsThree() {
+        list.deleteByIndex(1);
+        assertThat(list.get(1), is(100));
+        assertThat(list.getSize(), is(2));
     }
 }

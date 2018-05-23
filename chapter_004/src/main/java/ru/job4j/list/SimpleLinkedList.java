@@ -24,8 +24,18 @@ public class SimpleLinkedList<E> {
      * Method deletes 1st entry in the list.
      */
     public void delete() {
-        Node<E> target = this.first;
-        this.first = target.next;
+        Node<E> temp = this.first;
+        this.first = temp.next;
+        this.size--;
+    }
+
+    /**
+     * Method deletes entry in the list by index.
+     */
+    public void deleteByIndex(int index) {
+        Node<E> temp = this.getNode(index).next;
+        this.getNode(index - 1).next = temp;
+        this.size--;
     }
 
     /**
@@ -37,6 +47,17 @@ public class SimpleLinkedList<E> {
             result = result.next;
         }
         return result.date;
+    }
+
+    /**
+     * Method returns element from list by index.
+     */
+    public Node<E> getNode(int index) {
+        Node<E> result = this.first;
+        for (int i = 0; i < index; i++) {
+            result = result.next;
+        }
+        return result;
     }
 
     /**
