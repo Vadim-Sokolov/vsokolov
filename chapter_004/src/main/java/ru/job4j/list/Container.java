@@ -33,6 +33,14 @@ public class Container<E> implements Iterable<E> {
         return node.getSize();
     }
 
+    public void delete() {
+        node.delete();
+    }
+
+    public void deleteByIndex(int index) {
+        node.deleteByIndex(index);
+    }
+
     @Override
     public Iterator<E> iterator() {
         int expectedModCount = modCount;

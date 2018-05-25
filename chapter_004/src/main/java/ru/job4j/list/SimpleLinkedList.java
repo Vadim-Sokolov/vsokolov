@@ -70,7 +70,7 @@ public class SimpleLinkedList<E> {
     /**
      * Class for storing data.
      */
-    private static class Node<E> {
+    public static class Node<E> {
         E date;
         Node<E> next;
 
