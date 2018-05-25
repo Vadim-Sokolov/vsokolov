@@ -44,4 +44,9 @@ public class SimpleLinkedListTest {
         assertThat(list.get(1), is(100));
         assertThat(list.getSize(), is(2));
     }
+
+    @Test
+    public void hasLoopTest() {
+        assertThat(list.hasLoop(), is(false));
+    }
 }

@@ -1,5 +1,7 @@
 package ru.job4j.list;
 
+import java.util.HashSet;
+
 /**
  * @author vsokolov
  * @version $Id$
@@ -7,8 +9,28 @@ package ru.job4j.list;
  */
 public class SimpleLinkedList<E> {
 
-    private int size;
+    private int size = 0;
     private Node<E> first;
+
+    public boolean hasLoop() {
+        boolean result = true;
+        HashSet<Node> s = new HashSet<Node>();
+        if (this.getNode(0) == null) {
+            result = false;
+        } else {
+            for (int i = 0; i < this.getSize(); i++) {
+                if (this.getNode(i).next == null) {
+                    result = false;
+                    break;
+                } else if (s.contains(this.getNode(i).next)) {
+                    break;
+                } else {
+                    s.add(this.getNode(i));
+                }
+            }
+        }
+        return result;
+    }
 
     /**
      * Method adds an entry to the beginning of list.
