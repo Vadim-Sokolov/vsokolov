@@ -34,7 +34,7 @@ public class SimpleLinkedListTest {
 
     @Test
     public void whenDeleteFirstElementThenFirstElementIsTwo() {
-        list.delete();
+        list.deleteByIndex(0);
         assertThat(list.get(0), is(200));
     }
 

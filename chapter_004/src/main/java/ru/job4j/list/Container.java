@@ -34,7 +34,7 @@ public class Container<E> implements Iterable<E> {
     }
 
     public void delete() {
-        node.delete();
+        node.deleteByIndex(0);
     }
 
     public void deleteByIndex(int index) {
