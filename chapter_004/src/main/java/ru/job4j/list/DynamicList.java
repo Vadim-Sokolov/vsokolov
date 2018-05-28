@@ -20,10 +20,13 @@ public class DynamicList<E> implements Iterable<E> {
         this.container = new Object[size];
     }
 
+    /**
+     * Method increases array size if necessary,
+     * and adds given value to the array.
+     * @param value
+     */
     public void add(E value) {
-        if (index < size) {
-            container[index++] = value;
-        } else {
+        if (size <= index) {
             int target = size;
             size *= 2;
             Object[] temp = new Object[size];
@@ -31,8 +34,8 @@ public class DynamicList<E> implements Iterable<E> {
                 temp[i] = container[i];
             }
             container = temp;
-            container[index++] = value;
         }
+        container[index++] = value;
     }
 
     public E get(int index) {
