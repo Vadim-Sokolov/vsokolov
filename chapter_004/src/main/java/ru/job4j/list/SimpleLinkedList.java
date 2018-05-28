@@ -64,7 +64,7 @@ public class SimpleLinkedList<E> {
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
-        return result.date;
+        return result.value;
     }
 
     /**
@@ -89,11 +89,15 @@ public class SimpleLinkedList<E> {
      * Class for storing data.
      */
     public static class Node<E> {
-        E date;
+        E value;
         Node<E> next;
 
-        Node(E date) {
-            this.date = date;
+        Node(E value) {
+            this.value = value;
+        }
+
+        E getValue() {
+            return this.value;
         }
     }
 }

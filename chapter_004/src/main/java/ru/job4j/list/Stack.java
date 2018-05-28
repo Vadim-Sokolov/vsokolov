@@ -15,7 +15,7 @@ public class Stack<E>  {
 
     public E poll() {
         E result = container.get(0);
-        container.delete();
+        container.deleteByIndex(0);
         return result;
     }
 

@@ -4,6 +4,7 @@ import ru.job4j.list.SimpleLinkedList;
 import ru.job4j.list.SimpleLinkedList.Node;
 
 import java.util.Arrays;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 /**
@@ -16,6 +17,7 @@ public class Container<E> implements Iterable<E> {
     private SimpleLinkedList<E> node;
     private int size = 0;
     private int modCount = 0;
+    private int expectedModCount;
 
     public Container(SimpleLinkedList<E> node) {
         this.node = node;
@@ -33,17 +35,33 @@ public class Container<E> implements Iterable<E> {
         return node.getSize();
     }
 
-    public void delete() {
-        node.deleteByIndex(0);
-    }
-
     public void deleteByIndex(int index) {
         node.deleteByIndex(index);
     }
 
     @Override
-    public Iterator<E> iterator() {
-        int expectedModCount = modCount;
-        return (Iterator<E>) Arrays.asList(node).iterator();
+    public Iterator<E> iterator() throws ConcurrentModificationException {
+        if (expectedModCount != modCount) {
+            throw new ConcurrentModificationException();
+        }
+        return new Iterator<E>() {
+
+            Node current = node.getNode(0);
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public E next() {
+                if (hasNext()) {
+                    E value = (E) current.getValue();
+                    current = current.next;
+                    return value;
+                }
+                return null;
+            }
+        };
     }
 }
