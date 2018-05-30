@@ -27,7 +27,7 @@ public class TriangleTest {
 		// Calculate area.
 		double result = triangle.area();
 		
-		// Set the expected result.
+		// set the expected result.
 		double expected = 2d;
 		
 		// Assert equality.
