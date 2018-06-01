@@ -12,6 +12,9 @@ public class SimpleLinkedList<E> {
     private int size = 0;
     private Node<E> first;
 
+    /**
+     * Method checks whether the list has a loop.
+     */
     public boolean hasLoop() {
         boolean result = true;
         HashSet<Node> s = new HashSet<Node>();
@@ -35,8 +38,8 @@ public class SimpleLinkedList<E> {
     /**
      * Method adds an entry to the beginning of list.
      */
-    public void add(E date) {
-        Node<E> newLink = new Node<>(date);
+    public void add(E value) {
+        Node<E> newLink = new Node<>(value);
         newLink.next = this.first;
         this.first = newLink;
         this.size++;
@@ -76,6 +79,28 @@ public class SimpleLinkedList<E> {
             result = result.next;
         }
         return result;
+    }
+
+    /**
+     * Method checks whether the list contains a given element.
+     */
+
+    public boolean contains(E e) {
+        boolean result = false;
+        for (int i = 0; i < size; i++) {
+            if (e.equals(getNode(i).getValue())) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Method checks whether the list contains a given element.
+     */
+    public boolean hasNext(int index) {
+        return this.getNode(index).next != null;
     }
 
     /**

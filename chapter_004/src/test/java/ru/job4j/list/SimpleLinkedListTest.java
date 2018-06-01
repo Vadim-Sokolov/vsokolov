@@ -49,4 +49,15 @@ public class SimpleLinkedListTest {
     public void hasLoopTest() {
         assertThat(list.hasLoop(), is(false));
     }
+
+    @Test
+    public void containsTest() {
+        assertThat(list.contains(300), is(true));
+    }
+
+    @Test
+    public void hasNextTest() {
+        assertThat(list.hasNext(1), is(true));
+        assertThat(list.hasNext(2), is(false));
+    }
 }
