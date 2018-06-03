@@ -2,6 +2,7 @@ package ru.job4j.set;
 
 import ru.job4j.list.SimpleLinkedList;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -30,21 +31,7 @@ public class LinkedSet<E> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<E>() {
-
-            private int currentIndex = 0;
-
-            @Override
-            public boolean hasNext() {
-                return currentIndex < data.getSize()
-                        && data.getNode(currentIndex + 1) != null;
-            }
-
-            @Override
-            public E next() {
-                return (E) data.getNode(currentIndex++);
-            }
-        };
+        return (Iterator<E>) Arrays.asList(data).iterator();
     }
 
     public int getSize() {
