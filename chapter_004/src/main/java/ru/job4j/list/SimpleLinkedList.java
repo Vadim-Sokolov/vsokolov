@@ -37,6 +37,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method adds an entry to the beginning of list.
+     * @param value
      */
     public void add(E value) {
         Node<E> newLink = new Node<>(value);
@@ -47,6 +48,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method deletes entry in the list by index.
+     * @param index
      */
     public void deleteByIndex(int index) {
         if (index == 0) {
@@ -60,7 +62,21 @@ public class SimpleLinkedList<E> {
     }
 
     /**
+     * Method deletes entry in the list by value.
+     * @param e
+     */
+    public void deleteByValue(E e) {
+        for (int i = 0; i < size; i++) {
+            if (e.equals(getNode(i).getValue())) {
+                deleteByIndex(i);
+                break;
+            }
+        }
+    }
+
+    /**
      * Method returns element from list by index.
+     * @param index
      */
     public E get(int index) {
         Node<E> result = this.first;
@@ -72,6 +88,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method returns element from list by index.
+     * @param index
      */
     public Node<E> getNode(int index) {
         Node<E> result = this.first;
@@ -83,8 +100,8 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method checks whether the list contains a given element.
+     * @param e
      */
-
     public boolean contains(E e) {
         boolean result = false;
         for (int i = 0; i < size; i++) {
@@ -98,6 +115,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method checks whether the list contains a given element.
+     * @param index
      */
     public boolean hasNext(int index) {
         return this.getNode(index).next != null;

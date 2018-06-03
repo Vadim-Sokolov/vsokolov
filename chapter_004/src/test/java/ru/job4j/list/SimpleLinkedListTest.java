@@ -60,4 +60,11 @@ public class SimpleLinkedListTest {
         assertThat(list.hasNext(1), is(true));
         assertThat(list.hasNext(2), is(false));
     }
+
+    @Test
+    public void deleteByValueTest() {
+        list.deleteByValue(200);
+        assertThat(list.getSize(), is(2));
+        assertThat(list.contains(200), is(false));
+    }
 }

@@ -21,7 +21,6 @@ public class SimpleSet<E> implements Iterable<E> {
     /**
      * Method checks whether a given element is contained in the Set.
      * If not, adds the element to the Set.
-     *
      * @param e
      */
     public void add(E e) {
