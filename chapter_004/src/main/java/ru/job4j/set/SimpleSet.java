@@ -1,5 +1,7 @@
 package ru.job4j.set;
 
+import ru.job4j.list.DynamicList;
+
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -10,12 +12,12 @@ import java.util.Iterator;
  */
 public class SimpleSet<E> implements Iterable<E> {
 
-    private int size = 3;
-    private Object[] o;
+    private int size;
+    private DynamicList<E> data;
     private int index = 0;
 
     public SimpleSet() {
-        this.o = new Object[3];
+        this.data = new DynamicList<>(3);
     }
 
     /**
@@ -24,23 +26,12 @@ public class SimpleSet<E> implements Iterable<E> {
      * @param e
      */
     public void add(E e) {
-        if (size <= index) {
-            int target = size;
-            size *= 2;
-            Object[] temp = new Object[size];
-            for (int i = 0; i < target; i++) {
-                temp[i] = o[i];
-            }
-            o = temp;
-        }
-        if (!this.contains(e)) {
-            this.o[index++] = e;
-        }
+        data.add(e);
     }
 
     public boolean contains(E e) {
         boolean result = false;
-        for (int i = 0; i < this.size; i++) {
+        for (int i = 0; i < this.data.getSize(); i++) {
             if (e.equals(this.get(i))) {
                 result = true;
                 break;
@@ -50,11 +41,11 @@ public class SimpleSet<E> implements Iterable<E> {
     }
 
     public E get(int index) {
-        return (E) o[index];
+        return (E) data.get(index);
     }
 
     public int getSize() {
-        return this.size;
+        return this.data.getSize();
     }
 
     @Override
@@ -65,12 +56,12 @@ public class SimpleSet<E> implements Iterable<E> {
 
             @Override
             public boolean hasNext() {
-                return currentIndex < size && o[currentIndex] != null;
+                return currentIndex < size && data.get(index) != null;
             }
 
             @Override
             public E next() {
-                return (E) o[currentIndex++];
+                return (E) data.get(index++);
             }
         };
     }

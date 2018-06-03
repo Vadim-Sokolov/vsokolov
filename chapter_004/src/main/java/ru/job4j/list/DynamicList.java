@@ -48,7 +48,7 @@ public class DynamicList<E> implements Iterable<E> {
         return (Iterator<E>) Arrays.asList(container).iterator();
     }
 
-    int getSize() {
+    public int getSize() {
         return size;
     }
 }
