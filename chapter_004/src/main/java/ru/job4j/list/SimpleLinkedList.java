@@ -13,23 +13,20 @@ public class SimpleLinkedList<E> {
     private Node<E> first;
 
     /**
-     * Method checks whether the list has a loop.
+     * Method checks whether the list has a loop
+     * using Floyd algorithm.
      */
-    public boolean hasLoop() {
-        boolean result = true;
-        HashSet<Node> s = new HashSet<Node>();
-        if (this.getNode(0) == null) {
-            result = false;
-        } else {
-            for (int i = 0; i < this.getSize(); i++) {
-                if (this.getNode(i).next == null) {
-                    result = false;
-                    break;
-                } else if (s.contains(this.getNode(i).next)) {
-                    break;
-                } else {
-                    s.add(this.getNode(i));
-                }
+    boolean hasLoop() {
+        boolean result = false;
+        Node<E> turtouse = this.first;
+        Node<E> hare = this.first;
+
+        while (hare != null && hare.next != null) {
+            turtouse = turtouse.next;
+            hare = hare.next.next;
+            if (turtouse == hare) {
+                result = true;
+                break;
             }
         }
         return result;
@@ -37,6 +34,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method adds an entry to the beginning of list.
+     *
      * @param value
      */
     public void add(E value) {
@@ -48,6 +46,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method deletes entry in the list by index.
+     *
      * @param index
      */
     public void deleteByIndex(int index) {
@@ -63,6 +62,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method deletes entry in the list by value.
+     *
      * @param e
      */
     public void deleteByValue(E e) {
@@ -76,6 +76,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method returns element from list by index.
+     *
      * @param index
      */
     public E get(int index) {
@@ -88,6 +89,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method returns element from list by index.
+     *
      * @param index
      */
     public Node<E> getNode(int index) {
@@ -100,6 +102,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method checks whether the list contains a given element.
+     *
      * @param e
      */
     public boolean contains(E e) {
@@ -115,6 +118,7 @@ public class SimpleLinkedList<E> {
 
     /**
      * Method checks whether the list contains a given element.
+     *
      * @param index
      */
     public boolean hasNext(int index) {

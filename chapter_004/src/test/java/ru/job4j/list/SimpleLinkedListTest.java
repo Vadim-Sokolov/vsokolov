@@ -48,6 +48,8 @@ public class SimpleLinkedListTest {
     @Test
     public void hasLoopTest() {
         assertThat(list.hasLoop(), is(false));
+        list.getNode(1).next = list.getNode(0);
+        assertThat(list.hasLoop(), is(true));
     }
 
     @Test
