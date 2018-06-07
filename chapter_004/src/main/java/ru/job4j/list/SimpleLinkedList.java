@@ -16,7 +16,7 @@ public class SimpleLinkedList<E> {
      * Method checks whether the list has a loop
      * using Floyd algorithm.
      */
-    boolean hasLoop() {
+    public boolean hasLoop() {
         boolean result = false;
         Node<E> turtouse = this.first;
         Node<E> hare = this.first;
