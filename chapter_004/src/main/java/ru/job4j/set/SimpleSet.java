@@ -26,7 +26,10 @@ public class SimpleSet<E> implements Iterable<E> {
      * @param e
      */
     public void add(E e) {
-        data.add(e);
+        if (!this.contains(e)) {
+            data.add(e);
+            size++;
+        }
     }
 
     public boolean contains(E e) {
