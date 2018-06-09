@@ -31,7 +31,19 @@ public class LinkedSet<E> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return (Iterator<E>) Arrays.asList(data).iterator();
+        return new Iterator<E>() {
+
+            private int currentIndex = 0;
+        @Override
+            public boolean hasNext() {
+                return currentIndex < data.getSize()
+                        && data.getNode(currentIndex + 1) != null;
+            }
+        @Override
+        public E next() {
+               return (E) data.getNode(currentIndex++);
+            }
+        };
     }
 
     public int getSize() {
