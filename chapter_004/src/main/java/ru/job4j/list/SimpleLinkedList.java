@@ -1,13 +1,14 @@
 package ru.job4j.list;
 
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * @author vsokolov
  * @version $Id$
  * @since 0.1
  */
-public class SimpleLinkedList<E> {
+public class SimpleLinkedList<E> implements Iterable {
 
     private int size = 0;
     private Node<E> first;
@@ -130,6 +131,29 @@ public class SimpleLinkedList<E> {
      */
     public int getSize() {
         return this.size;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new Iterator<E>() {
+
+            Node current = first;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public E next() {
+                if (hasNext()) {
+                    E value = (E) current.value;
+                    current = current.next;
+                    return value;
+                }
+                return null;
+            }
+        };
     }
 
     /**
