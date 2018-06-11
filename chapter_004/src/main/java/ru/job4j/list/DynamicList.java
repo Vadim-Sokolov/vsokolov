@@ -26,7 +26,7 @@ public class DynamicList<E> implements Iterable<E> {
      * @param value
      */
     public void add(E value) {
-        if (size <= index) {
+        if (size <= index + 1) {
             int target = size;
             size *= 2;
             Object[] temp = new Object[size];

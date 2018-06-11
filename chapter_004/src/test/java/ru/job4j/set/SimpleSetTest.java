@@ -20,16 +20,21 @@ public class SimpleSetTest {
         list.add(25);
         list.add(26);
         list.add(27);
-        list.add(28);
-        list.add(29);
-        list.add(20);
     }
 
     @Test
     public void addTest() {
         list.add(200);
-        assertThat(list.getSize(), is(12));
-        assertThat(list.get(6), is(200));
+        assertThat(list.getSize(), is(6));
+        assertThat(list.get(3), is(200));
+    }
+
+    @Test
+    public void outOfBoundsTest() {
+        list.add(26);
+        for (Integer i : list) {
+            System.out.println(i);
+        }
     }
 
     @Test
