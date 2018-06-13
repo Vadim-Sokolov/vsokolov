@@ -21,7 +21,7 @@ public class MyHashMapTest {
 
     @Before
     public void beforeTest() {
-        map = new MyHashMap<>(new Hashtable());
+        map = new MyHashMap<>();
         map.insert(first, 100);
         map.insert(new User("bbb", 2, new GregorianCalendar(1990, 11, 24)), 200);
         map.insert(new User("ccc", 3, new GregorianCalendar(1980, 12, 25)), 300);
@@ -29,8 +29,7 @@ public class MyHashMapTest {
     @Test
     public void insertTest() {
         User test = new User("aaa", 1, new GregorianCalendar(2000, 10, 23));
-        map.insert(test, 400);
-        assertThat(map.get(first), is(400));
+        assertThat(map.insert(test, 400), is(false));
     }
 
     @Test
@@ -42,5 +41,11 @@ public class MyHashMapTest {
     public void deleteTest() {
         map.delete(first);
         assertThat(map.get(first), is((Integer) null));
+    }
+
+    @Test
+    public void mapGrowTest() {
+        map.insert(new User("ddd", 4, new GregorianCalendar(1970, 12, 25)), 400);
+        assertThat(map.getSize(), is(6));
     }
 }
