@@ -82,7 +82,9 @@ public class MyHashMap<K, V> implements Iterable {
         size *= 2;
         Entry<K, V>[] temp = new Entry[size];
         for (int i = 0; i < target; i++) {
-            temp[i] = buckets[i];
+            if (buckets[i] != null) {
+                temp[findBucket(buckets[i].getKey())] = buckets[i];
+            }
         }
         buckets = temp;
     }
