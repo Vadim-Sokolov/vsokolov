@@ -76,7 +76,7 @@ public class SimpleLinkedList<E> implements Iterable {
     }
 
     /**
-     * Method returns element from list by index.
+     * Method returns value of an element from list by index.
      *
      * @param index
      */
