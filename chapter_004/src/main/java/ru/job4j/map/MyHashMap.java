@@ -74,13 +74,13 @@ public class MyHashMap<K, V> implements Iterable {
     }
 
     public int findBucket(K key) {
-        return Math.abs(key.hashCode() % buckets.length);
+        return Math.abs(key.hashCode() % this.size);
     }
 
     public void mapGrow() {
-        int target = size;
-        size *= 2;
-        Entry<K, V>[] temp = new Entry[size];
+        int target = this.size;
+        this.size *= 2;
+        Entry<K, V>[] temp = new Entry[this.size];
         for (int i = 0; i < target; i++) {
             if (buckets[i] != null) {
                 temp[findBucket(buckets[i].getKey())] = buckets[i];
