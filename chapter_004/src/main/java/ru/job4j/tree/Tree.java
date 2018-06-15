@@ -28,6 +28,18 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable {
         return result;
     }
 
+    public boolean isBinary() {
+        boolean result = true;
+        Iterator<Node<E>> itr = this.iterator();
+        while (itr.hasNext()) {
+            if (itr.next().leaves().size() > 2) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
     @Override
     public Optional<Node<E>> findBy(E value) {
         Optional<Node<E>> result = Optional.empty();
@@ -48,35 +60,6 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable {
 
     @Override
     public Iterator iterator() {
-        return new Iterator<Node<E>>() {
-
-            Node<E> current = root;
-            int index = 0;
-
-            @Override
-            public boolean hasNext() {
-               boolean result = false;
-               List<Node<E>> children = current.leaves();
-               for (Node<E> c : children) {
-                   if (!(c.equals(null))) {
-                       result = true;
-                       break;
-                   } else {
-                       index = 0;
-                   }
-               }
-               return result;
-            }
-
-            @Override
-            public Node<E> next() {
-                if (hasNext()) {
-                    Node<E> result = current;
-                    current = current.leaves().get(index++);
-                    return result;
-                }
-                return null;
-            }
-        };
+        return Arrays.asList(this).iterator();
     }
 }
