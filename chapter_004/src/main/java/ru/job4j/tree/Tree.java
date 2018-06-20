@@ -7,7 +7,7 @@ import java.util.*;
  * @version $Id$
  * @since 0.1
  */
-public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable {
+public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable<Node<E>> {
 
     private Node<E> root;
 
@@ -18,10 +18,14 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable {
     @Override
     public boolean add(E parent, E child) {
         boolean result = true;
-        Optional<Node<E>> target = findBy(parent);
-        Node<E> toAdd = new Node<>(child);
-        if (target.isPresent()) {
-            target.get().add(toAdd);
+        if (!findBy(child).isPresent()) {
+            Optional<Node<E>> target = findBy(parent);
+            Node<E> toAdd = new Node<>(child);
+            if (target.isPresent()) {
+                target.get().add(toAdd);
+            } else {
+                result = false;
+            }
         } else {
             result = false;
         }
@@ -59,7 +63,21 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable {
     }
 
     @Override
-    public Iterator iterator() {
-        return Arrays.asList(this).iterator();
+    public Iterator<Node<E>> iterator() {
+        return new Iterator<Node<E>>() {
+
+            Node<E> current = root;
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return (current.leaves() != null);
+            }
+
+            @Override
+            public Node<E> next() {
+                return current.leaves().get(index++);
+            }
+        };
     }
 }
