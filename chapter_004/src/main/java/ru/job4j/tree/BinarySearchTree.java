@@ -5,22 +5,22 @@ package ru.job4j.tree;
  * @version $Id$
  * @since 0.1
  */
-public class BinarySearchTree {
+public class BinarySearchTree<E> {
 
-    private BSTNode root;
+    private BSTNode<E> root;
 
     public BinarySearchTree() {
         this.root = null;
     }
 
-    public void add(int data) {
+    public void add(E data) {
         root = add(root, data);
     }
 
-    public BSTNode add(BSTNode node, int data) {
+    public BSTNode<E> add(BSTNode node, E data) {
         if (node == null) {
             node = new BSTNode(data);
-        } else if (data < node.getData()) {
+        } else if (data.hashCode() < node.getData().hashCode()) {
             node.left = add(node.left, data);
         } else {
             node.right = add(node.right, data);
@@ -28,7 +28,7 @@ public class BinarySearchTree {
         return node;
     }
 
-    public BSTNode getRoot() {
+    public BSTNode<E> getRoot() {
         return root;
     }
 }

@@ -1,22 +1,25 @@
 package ru.job4j.tree;
+
+import java.util.Comparator;
+
 /**
  * @author vsokolov
  * @version $Id$
  * @since 0.1
  */
-public class BSTNode {
+public class BSTNode<E> {
 
-    protected BSTNode left;
-    protected BSTNode right;
-    private int data;
+    protected BSTNode<E> left;
+    protected BSTNode<E> right;
+    private E data;
 
-    public BSTNode(int data) {
+    public BSTNode(E data) {
         this.left = null;
         this.right = null;
         this.data = data;
     }
 
-    public int getData() {
+    public E getData() {
         return data;
     }
 }
