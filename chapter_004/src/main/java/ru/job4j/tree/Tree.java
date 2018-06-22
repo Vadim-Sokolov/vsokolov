@@ -17,17 +17,10 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable<No
 
     @Override
     public boolean add(E parent, E child) {
-        boolean result = true;
-        if (!findBy(child).isPresent()) {
-            Optional<Node<E>> target = findBy(parent);
-            Node<E> toAdd = new Node<>(child);
-            if (target.isPresent()) {
-                target.get().add(toAdd);
-            } else {
-                result = false;
-            }
-        } else {
-            result = false;
+        boolean result = false;
+        if (!findBy(child).isPresent() && findBy(parent).isPresent()) {
+            findBy(parent).get().add(new Node<>(child));
+            result = true;
         }
         return result;
     }

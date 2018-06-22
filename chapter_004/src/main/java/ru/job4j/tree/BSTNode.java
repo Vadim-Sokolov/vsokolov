@@ -7,7 +7,7 @@ import java.util.Comparator;
  * @version $Id$
  * @since 0.1
  */
-public class BSTNode<E> {
+public class BSTNode<E extends Comparable<E>> {
 
     protected BSTNode<E> left;
     protected BSTNode<E> right;
