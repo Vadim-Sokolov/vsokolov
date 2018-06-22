@@ -23,6 +23,9 @@ public class RectangleMove implements Runnable {
     @Override
     public void run() {
         while (true) {
+            if (Thread.interrupted()) {
+                return;
+            }
             if (this.rect.getX() >= limitX) {
                 this.rect.setX(295);
                 this.velX *= -1;
