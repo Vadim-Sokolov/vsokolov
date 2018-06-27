@@ -2,14 +2,17 @@ package ru.job4j.list;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
 
 /**
  * @author vsokolov
  * @version $Id$
  * @since 0.1
  */
+@ThreadSafe
 public class DynamicList<E> implements Iterable<E> {
-
+    @GuardedBy("this.container")
     private int size;
     private Object[] container;
     private int index = 0;
@@ -26,16 +29,18 @@ public class DynamicList<E> implements Iterable<E> {
      * @param value
      */
     public void add(E value) {
-        if (size <= index + 1) {
-            int target = size;
-            size *= 2;
-            Object[] temp = new Object[size];
-            for (int i = 0; i < target; i++) {
-                temp[i] = container[i];
+        synchronized (this.container) {
+            if (size <= index + 1) {
+                int target = size;
+                size *= 2;
+                Object[] temp = new Object[size];
+                for (int i = 0; i < target; i++) {
+                    temp[i] = container[i];
+                }
+                container = temp;
             }
-            container = temp;
+            container[index++] = value;
         }
-        container[index++] = value;
     }
 
     public E get(int index) {

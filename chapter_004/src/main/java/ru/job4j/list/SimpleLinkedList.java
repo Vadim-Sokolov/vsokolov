@@ -2,14 +2,18 @@ package ru.job4j.list;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
 
 /**
  * @author vsokolov
  * @version $Id$
  * @since 0.1
  */
+@ThreadSafe
 public class SimpleLinkedList<E> implements Iterable {
 
+    @GuardedBy("this")
     private int size = 0;
     private Node<E> first;
 
@@ -39,10 +43,13 @@ public class SimpleLinkedList<E> implements Iterable {
      * @param value
      */
     public void add(E value) {
-        Node<E> newLink = new Node<>(value);
-        newLink.next = this.first;
-        this.first = newLink;
-        this.size++;
+        synchronized (this) {
+            Node<E> newLink = new Node<>(value);
+            newLink.next = this.first;
+            this.first = newLink;
+            this.size++;
+
+        }
     }
 
     /**
@@ -51,14 +58,16 @@ public class SimpleLinkedList<E> implements Iterable {
      * @param index
      */
     public void deleteByIndex(int index) {
-        if (index == 0) {
-            Node<E> temp = this.first;
-            this.first = temp.next;
-        } else {
-            Node<E> temp = this.getNode(index).next;
-            this.getNode(index - 1).next = temp;
+        synchronized (this) {
+            if (index == 0) {
+                Node<E> temp = this.first;
+                this.first = temp.next;
+            } else {
+                Node<E> temp = this.getNode(index).next;
+                this.getNode(index - 1).next = temp;
+            }
+            this.size--;
         }
-        this.size--;
     }
 
     /**
@@ -67,10 +76,12 @@ public class SimpleLinkedList<E> implements Iterable {
      * @param e
      */
     public void deleteByValue(E e) {
-        for (int i = 0; i < size; i++) {
-            if (e.equals(getNode(i).getValue())) {
-                deleteByIndex(i);
-                break;
+        synchronized (this) {
+            for (int i = 0; i < size; i++) {
+                if (e.equals(getNode(i).getValue())) {
+                    deleteByIndex(i);
+                    break;
+                }
             }
         }
     }
@@ -81,11 +92,13 @@ public class SimpleLinkedList<E> implements Iterable {
      * @param index
      */
     public E get(int index) {
-        Node<E> result = this.first;
-        for (int i = 0; i < index; i++) {
-            result = result.next;
+        synchronized (this) {
+            Node<E> result = this.first;
+            for (int i = 0; i < index; i++) {
+                result = result.next;
+            }
+            return result.value;
         }
-        return result.value;
     }
 
     /**
@@ -94,11 +107,13 @@ public class SimpleLinkedList<E> implements Iterable {
      * @param index
      */
     public Node<E> getNode(int index) {
-        Node<E> result = this.first;
-        for (int i = 0; i < index; i++) {
-            result = result.next;
+        synchronized (this) {
+            Node<E> result = this.first;
+            for (int i = 0; i < index; i++) {
+                result = result.next;
+            }
+            return result;
         }
-        return result;
     }
 
     /**
@@ -107,14 +122,16 @@ public class SimpleLinkedList<E> implements Iterable {
      * @param e
      */
     public boolean contains(E e) {
-        boolean result = false;
-        for (int i = 0; i < size; i++) {
-            if (e.equals(getNode(i).getValue())) {
-                result = true;
-                break;
+        synchronized (this) {
+            boolean result = false;
+            for (int i = 0; i < size; i++) {
+                if (e.equals(getNode(i).getValue())) {
+                    result = true;
+                    break;
+                }
             }
+            return result;
         }
-        return result;
     }
 
     /**
