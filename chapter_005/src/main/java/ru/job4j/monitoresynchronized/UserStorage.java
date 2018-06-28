@@ -1,8 +1,8 @@
 package ru.job4j.monitoresynchronized;
 
+
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -30,30 +30,30 @@ public class DynamicList<E> implements Iterable<E> {
      */
     public void add(E value) {
         synchronized (this.container) {
-            if (size <= index + 1) {
-                int target = size;
-                size *= 2;
-                Object[] temp = new Object[size];
+            if (this.size <= this.index + 1) {
+                int target = this.size;
+                this.size *= 2;
+                Object[] temp = new Object[this.size];
                 for (int i = 0; i < target; i++) {
-                    temp[i] = container[i];
+                    temp[i] = this.container[i];
                 }
-                container = temp;
+                this.container = temp;
             }
-            container[index++] = value;
+            this.container[this.index++] = value;
         }
     }
 
     public E get(int index) {
-        return (E) container[index];
+        return (E) this.container[index];
     }
 
     @Override
     public Iterator<E> iterator() {
         int expectedModCount = modCount;
-        return (Iterator<E>) Arrays.asList(container).iterator();
+        return (Iterator<E>) Arrays.asList(this.container).iterator();
     }
 
     public int getSize() {
-        return size;
+        return this.size;
     }
 }
