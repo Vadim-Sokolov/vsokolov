@@ -147,7 +147,9 @@ public class SimpleLinkedList<E> implements Iterable {
      * Method returns size of list.
      */
     public int getSize() {
-        return this.size;
+        synchronized (this) {
+            return this.size;
+        }
     }
 
     @Override

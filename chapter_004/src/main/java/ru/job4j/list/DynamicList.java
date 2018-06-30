@@ -44,7 +44,9 @@ public class DynamicList<E> implements Iterable<E> {
     }
 
     public E get(int index) {
-        return (E) this.container[index];
+        synchronized (this.container) {
+            return (E) this.container[index];
+        }
     }
 
     @Override
@@ -54,6 +56,8 @@ public class DynamicList<E> implements Iterable<E> {
     }
 
     public int getSize() {
-        return this.size;
+        synchronized (this.container) {
+            return this.size;
+        }
     }
 }
