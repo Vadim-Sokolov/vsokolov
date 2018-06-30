@@ -9,10 +9,10 @@ import javafx.scene.shape.Rectangle;
 public class RectangleMove implements Runnable {
 
     private final Rectangle rect;
-    int limitX = 300;
-    int limitY = 300;
-    int velX;
-    int velY;
+    private int limitX = 300;
+    private int limitY = 300;
+    private int velX;
+    private int velY;
 
     public RectangleMove(Rectangle rect) {
         this.rect = rect;
