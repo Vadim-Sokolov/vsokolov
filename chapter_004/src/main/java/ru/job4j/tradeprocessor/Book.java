@@ -13,9 +13,9 @@ import java.util.TreeMap;
 public class Book {
 
     private String bookName;
-    Comparator<TradeRequest> comparator;
-    PriorityQueue<TradeRequest> bid;
-    PriorityQueue<TradeRequest> ask;
+    private Comparator<TradeRequest> comparator;
+    private PriorityQueue<TradeRequest> bid;
+    private PriorityQueue<TradeRequest> ask;
 
     public Book(String bookName) {
         this.bookName = bookName;
@@ -125,6 +125,7 @@ public class Book {
     public String getName() {
         return this.bookName;
     }
+
         private class PriceComparator implements Comparator<TradeRequest> {
 
             @Override

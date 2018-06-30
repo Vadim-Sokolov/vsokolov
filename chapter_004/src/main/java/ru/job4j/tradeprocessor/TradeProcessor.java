@@ -1,19 +1,22 @@
 package ru.job4j.tradeprocessor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TradeProcessor {
 
-    private ArrayList<Book> books;
+    private HashMap<String, Book> books;
     private long index = 0;
 
     public TradeProcessor() {
-        books.add(new Book("Not found"));
+        this.books = new HashMap<>();
+        books.put("Not found", new Book("Not found"));
     }
 
     /**
      * Method adds or deletes a TradeRequest according to type.
      * If neither option is viable - does nothing, returns false.
+     *
      * @param tr
      * @return boolean
      */
@@ -33,58 +36,52 @@ public class TradeProcessor {
 
     /**
      * Method finds the appropriate bucket for TradeRequest by bookName.
+     *
      * @param tr
      * @return Book
      */
     public Book findBook(TradeRequest tr) {
-        Book result = books.get(0);
-        for (Book b : books) {
-            if (tr.getBookName().equals(b.getBookName())) {
-                result = b;
-                break;
-            } else {
-                books.add(new Book(tr.getBookName()));
-            }
+        Book result = books.get("Not found");
+        if (books.containsKey(tr.getBookName())) {
+            result = books.get(tr.getBookName());
+        } else {
+            books.put(tr.getBookName(), new Book(tr.getBookName()));
         }
         return result;
     }
 
     /**
      * Method finds a Book be bookName.
+     *
      * @param bookName
      * @return Book
      */
     public Book getBookByName(String bookName) {
-        Book result = books.get(0);
-        for (Book b : books) {
-            if (b.getBookName().equals(bookName)) {
-                result = b;
-                break;
-            }
+        Book result = books.get("Not found");
+        if (books.containsKey(bookName)) {
+            result = books.get(bookName);
         }
         return result;
     }
 
     /**
      * Method adds Book to list of books if it is not already on the list.
+     *
      * @param book
      * @return boolean
      */
     public boolean addBook(Book book) {
         boolean result = true;
         String bookName = book.getBookName();
-        for (Book b : books) {
-            if (b.getBookName().equals(bookName)) {
-                result = false;
-                break;
-            } else {
-                books.add(book);
-            }
+        if (books.containsKey(bookName)) {
+            result = false;
+        } else {
+            books.put(bookName, book);
         }
         return result;
     }
 
-    public ArrayList<Book> getBooks() {
+    public HashMap<String, Book> getBooks() {
         return this.books;
     }
 }
