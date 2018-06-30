@@ -3,6 +3,7 @@ package ru.job4j.monitoresynchronized;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,36 +19,33 @@ public class UserStorage {
     private final List<User> users = new ArrayList<>();
 
     public boolean add(User user) {
-        boolean result = true;
+        boolean result = false;
         synchronized (this.users) {
             if (!this.users.contains(user)) {
                 this.users.add(user);
-            } else {
-                result = false;
+                result = true;
             }
+            return result;
         }
-        return result;
     }
 
     public boolean update(User user) {
-        boolean result = true;
+        boolean result = false;
         synchronized (this.users) {
             if (this.users.contains(user)) {
                 getUserById(user.getId()).setAmount(user.getAmount());
-            } else {
-                result = false;
+                result = true;
             }
         }
         return result;
     }
 
     public boolean delete(User user) {
-        boolean result = true;
+        boolean result = false;
         synchronized (this.users) {
             if (this.users.contains(user)) {
                 this.users.remove(user);
-            } else {
-                result = false;
+                result = true;
             }
         }
         return result;
