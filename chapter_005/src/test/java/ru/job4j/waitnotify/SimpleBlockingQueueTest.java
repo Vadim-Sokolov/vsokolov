@@ -1,8 +1,10 @@
 package ru.job4j.waitnotify;
 
-import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import ru.job4j.waitnotify.sbq.Consumer;
+import ru.job4j.waitnotify.sbq.Producer;
+import ru.job4j.waitnotify.sbq.SimpleBlockingQueue;
+
 import static org.hamcrest.Matchers.is;
 /**
  * @author vsokolov

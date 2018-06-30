@@ -1,4 +1,4 @@
-package ru.job4j.waitnotify;
+package ru.job4j.waitnotify.sbq;
 
 /**
  * @author vsokolov

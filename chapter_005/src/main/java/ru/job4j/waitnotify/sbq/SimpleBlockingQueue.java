@@ -1,4 +1,4 @@
-package ru.job4j.waitnotify;
+package ru.job4j.waitnotify.sbq;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
@@ -23,14 +23,24 @@ public class SimpleBlockingQueue<T> {
         }
     }
 
-    public void offer(T value) {
+    public void offer(T value) throws InterruptedException {
         synchronized (this) {
+            while (this.queue.size() > 3) {
+                wait();
+            } if (this.queue.size() == 0) {
+                notify();
+            }
             this.queue.offer(value);
         }
     }
 
-    public T poll() {
+    public T poll() throws InterruptedException {
         synchronized (this) {
+            while (this.queue.size() == 0) {
+                wait();
+            } if (this.queue.size() > 3) {
+                notify();
+            }
             return this.queue.poll();
         }
     }
