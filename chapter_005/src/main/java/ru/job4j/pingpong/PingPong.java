@@ -1,10 +1,12 @@
 package ru.job4j.pingpong;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * @author vsokolov
@@ -22,13 +24,12 @@ public class PingPong extends Application {
         Group group = new Group();
         Rectangle rect = new Rectangle(50, 100, 10, 10);
         group.getChildren().add(rect);
-        new Thread(new RectangleMove(rect)).start();
+        Thread t = new Thread(new RectangleMove(rect));
+        t.start();
         stage.setScene(new Scene(group, limitX, limitY));
         stage.setTitle(JOB4J);
         stage.setResizable(false);
-        /*stage.setOnCloseRequest(
-               event -> Thread.interrupt()
-            );*/
+        stage.setOnCloseRequest(event -> t.interrupt());
         stage.show();
     }
 }
