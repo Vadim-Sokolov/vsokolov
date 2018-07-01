@@ -1,8 +1,9 @@
-package ru.job4j.waitnotify;
+package ru.job4j.waitnotify.threadpool;
+
+import ru.job4j.waitnotify.sbq.SimpleBlockingQueue;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 /**
  * @author vsokolov
@@ -12,12 +13,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ThreadPool {
 
     private final List<Thread> threads;
-    private final Queue<Runnable> tasks;
+    private final SimpleBlockingQueue<Runnable> tasks;
     int size;
 
     public ThreadPool() {
         this.size = Runtime.getRuntime().availableProcessors();
-        this.tasks = new LinkedBlockingQueue<>();
+        this.tasks = new SimpleBlockingQueue<>();
         this.threads = new LinkedList<>();
         for (int i = 0; i < size; i++) {
             PoolWorker t = new PoolWorker(this.tasks);
@@ -26,9 +27,9 @@ public class ThreadPool {
         }
     }
 
-    public void work(Runnable job) {
+    public void work(Runnable job) throws InterruptedException {
         synchronized (this.tasks) {
-            this.tasks.add(job);
+            this.tasks.offer(job);
             this.tasks.notify();
         }
     }

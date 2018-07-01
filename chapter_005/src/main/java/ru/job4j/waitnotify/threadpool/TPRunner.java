@@ -1,4 +1,4 @@
-package ru.job4j.waitnotify;
+package ru.job4j.waitnotify.threadpool;
 
 import java.util.Random;
 /**
@@ -19,7 +19,7 @@ public class TPRunner {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadPool tp = new ThreadPool();
         for (int i = 0; i < 10; i++) {
             tp.work(new Job(randomString()));

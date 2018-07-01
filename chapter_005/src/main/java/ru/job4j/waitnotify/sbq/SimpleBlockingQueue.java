@@ -23,25 +23,31 @@ public class SimpleBlockingQueue<T> {
         }
     }
 
+    public boolean isEmpty() {
+        synchronized (this) {
+            return this.queue.peek() == null;
+        }
+    }
+
     public void offer(T value) throws InterruptedException {
         synchronized (this) {
             while (this.queue.size() > 3) {
                 wait();
-            } if (this.queue.size() == 0) {
-                notify();
             }
             this.queue.offer(value);
+            notify();
         }
+
     }
 
     public T poll() throws InterruptedException {
         synchronized (this) {
             while (this.queue.size() == 0) {
                 wait();
-            } if (this.queue.size() > 3) {
-                notify();
             }
-            return this.queue.poll();
+            T result = this.queue.poll();
+            notify();
+            return result;
         }
     }
 
