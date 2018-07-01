@@ -14,7 +14,7 @@ public class ThreadPool {
 
     private final List<Thread> threads;
     private final SimpleBlockingQueue<Runnable> tasks;
-    int size;
+    private int size;
 
     public ThreadPool() {
         this.size = Runtime.getRuntime().availableProcessors();
