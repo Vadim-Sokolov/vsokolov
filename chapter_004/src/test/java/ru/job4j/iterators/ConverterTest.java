@@ -11,7 +11,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class ConverterTest {
-    /*Iterator<Integer> it;
+    Iterator<Integer> it;
 
     @Before
     public void setUp() {
@@ -95,5 +95,5 @@ public class ConverterTest {
         assertThat(it.next(), is(2));
         assertThat(it.next(), is(3));
         it.next();
-    }*/
+    }
 }

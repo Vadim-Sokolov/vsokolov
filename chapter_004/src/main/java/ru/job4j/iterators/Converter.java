@@ -10,24 +10,26 @@ import java.util.*;
 public class Converter {
 
     Iterator<Integer> convert(Iterator<Iterator<Integer>> its) {
+
         return new Iterator<Integer>() {
 
             Iterator<Integer> current;
 
             @Override
             public boolean hasNext() {
-                if (its.hasNext()) {
-                    current = its.next();
-                }
-                return (its.hasNext());
+                return current.hasNext();
             }
 
             @Override
             public Integer next() throws NoSuchElementException {
                 if (!hasNext()) {
-                    throw new NoSuchElementException();
+                    if (its.hasNext()) {
+                        current = its.next();
+                    } else {
+                        throw new NoSuchElementException();
+                    }
                 }
-                return -1;
+                return current.next();
             }
         };
     }
