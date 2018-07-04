@@ -26,7 +26,7 @@ public class WordIndex {
             }
             current = current.getChildren().get(c);
         }
-        current.getIndeces().add(index);
+        current.getIndices().add(index);
     }
 
     /**
@@ -82,6 +82,6 @@ public class WordIndex {
                 current = current.getChildren().get(c);
             }
         }
-        return current.getIndeces();
+        return current.getIndices();
     }
 }

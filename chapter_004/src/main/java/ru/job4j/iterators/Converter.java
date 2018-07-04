@@ -13,23 +13,23 @@ public class Converter {
 
         return new Iterator<Integer>() {
 
-            Iterator<Integer> current;
+            Iterator<Integer> current = its.next();
 
             @Override
             public boolean hasNext() {
-                return current.hasNext();
+                return current.hasNext() || its.hasNext();
             }
 
             @Override
             public Integer next() throws NoSuchElementException {
-                if (!hasNext()) {
-                    if (its.hasNext()) {
-                        current = its.next();
-                    } else {
-                        throw new NoSuchElementException();
-                    }
+                if (current.hasNext()) {
+                    return current.next();
+                } else if (its.hasNext()) {
+                    current = its.next();
+                    return current.next();
+                } else {
+                    throw new NoSuchElementException();
                 }
-                return current.next();
             }
         };
     }

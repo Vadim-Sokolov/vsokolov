@@ -18,7 +18,7 @@ public class Node {
         return children;
     }
 
-    public HashSet<Integer> getIndeces() {
+    public HashSet<Integer> getIndices() {
         return indices;
     }
 }
