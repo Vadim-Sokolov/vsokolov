@@ -1,7 +1,6 @@
 package ru.job4j;
 
-import java.util.Arrays;
-
+import java.util.TreeSet;
 /**
  * @author vsokolov
  * @version $Id$
@@ -10,10 +9,20 @@ import java.util.Arrays;
 public class StringComparator {
 
     public boolean sameChars(String firstStr, String secondStr) {
-        char[] first = firstStr.toCharArray();
-        char[] second = secondStr.toCharArray();
-        Arrays.sort(first);
-        Arrays.sort(second);
-        return Arrays.equals(first, second);
+        if (firstStr.length() != secondStr.length()) {
+            return false;
+        }
+        TreeSet<Character> firstSet = new TreeSet<>();
+        char[] firstArray = firstStr.toCharArray();
+
+        for (int i = 0; i < firstArray.length; i++) {
+            firstSet.add(firstArray[i]);
+        }
+        TreeSet<Character> secondSet = new TreeSet<>();
+        char[] secondArray = secondStr.toCharArray();
+        for (int i = 0; i < secondArray.length; i++) {
+            secondSet.add(secondArray[i]);
+        }
+        return firstSet.equals(secondSet);
     }
 }
