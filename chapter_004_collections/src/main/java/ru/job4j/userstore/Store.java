@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Store {
 
-    public HashMap<String, Integer> getChanges(List<User> previous, List<User> current) {
+    public Result getChanges(List<User> previous, List<User> current) {
         HashMap<Integer, String> prev = new HashMap<>();
         HashMap<Integer, String> curr = new HashMap<>();
         int newUsers = 0;
@@ -34,10 +34,7 @@ public class Store {
                 newUsers++;
             }
         }
-        HashMap<String, Integer> result = new HashMap<>();
-        result.put("New Users:", newUsers);
-        result.put("Changed Users:", changedUsers);
-        result.put("Deleted Users:", deletedUsers);
+        Result result = new Result(newUsers, changedUsers, deletedUsers);
         return result;
     }
 
@@ -64,6 +61,30 @@ public class Store {
 
         public void setName(String name) {
             this.name = name;
+        }
+    }
+
+    public class Result {
+        private int added;
+        private int changed;
+        private int deleted;
+
+        public Result(int added, int changed, int deleted) {
+            this.added = added;
+            this.changed = changed;
+            this.deleted = deleted;
+        }
+
+        public int getAdded() {
+            return added;
+        }
+
+        public int getChanged() {
+            return changed;
+        }
+
+        public int getDeleted() {
+            return deleted;
         }
     }
 }

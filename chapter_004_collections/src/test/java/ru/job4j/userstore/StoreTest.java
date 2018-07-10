@@ -28,9 +28,9 @@ public class StoreTest {
 
     @Test
     public void getChangesTest() {
-        HashMap result = st.getChanges(previous, current);
-        assertThat(result.get("New Users:"), is(1));
-        assertThat(result.get("Changed Users:"), is(1));
-        assertThat(result.get("Deleted Users:"), is(2));
+        Store.Result result = st.getChanges(previous, current);
+        assertThat(result.getAdded(), is(1));
+        assertThat(result.getChanged(), is(1));
+        assertThat(result.getDeleted(), is(2));
     }
 }
