@@ -33,8 +33,8 @@ public class ParallelSearch {
         Thread search = new Thread() {
             @Override
             public void run() {
-                ru.job4j.parallelsearch.FileVisitor fv = new ru.job4j.parallelsearch.FileVisitor();
-                ArrayList<String> targetFiles = fv.filterExtensions(fv.getPaths(root), exts);
+                ru.job4j.parallelsearch.FileVisitor fv1 = new ru.job4j.parallelsearch.FileVisitor();
+                ArrayList<String> targetFiles = fv1.filterExtensions(fv1.getPaths(root), exts);
                 synchronized (files) {
                     for (String t : targetFiles) {
                         files.add(t);
@@ -45,11 +45,11 @@ public class ParallelSearch {
         Thread read = new Thread() {
             @Override
             public void run() {
-                ru.job4j.parallelsearch.FileVisitor fv = new ru.job4j.parallelsearch.FileVisitor();
+                ru.job4j.parallelsearch.FileVisitor fv2 = new ru.job4j.parallelsearch.FileVisitor();
                 synchronized (files) {
                     if (files.size() != 0) {
                         try {
-                            paths = fv.filterByText(files, text);
+                            paths = fv2.filterByText(files, text);
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }

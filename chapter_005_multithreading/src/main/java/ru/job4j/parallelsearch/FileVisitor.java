@@ -7,18 +7,19 @@ import java.util.*;
 public class FileVisitor {
 
     public List<String> getPaths(String directoryName) {
-
-        File directory = new File(directoryName);
-
+        File dir = new File(directoryName);
+        Stack<File> stack = new Stack<File>();
+        stack.push(dir);
         List<String> result = new ArrayList<>();
-        File[] fileList = directory.listFiles();
-
-        for (File file : fileList) {
-            if (file.isFile()) {
-                result.add(file.getAbsolutePath());
+        while (!stack.isEmpty()) {
+            File child = stack.pop();
+            if (child.isFile()) {
+                result.add(child.getAbsolutePath());
             }
-            if (file.isDirectory()) {
-                result.addAll(getPaths(file.getAbsolutePath()));
+            if (child.isDirectory()) {
+                for (File f : child.listFiles()) {
+                    stack.push(f);
+                }
             }
         }
         return result;
@@ -46,7 +47,8 @@ public class FileVisitor {
                     sc.close();
                     break;
                 }
-            } sc.close();
+            }
+            sc.close();
         }
         return result;
     }
