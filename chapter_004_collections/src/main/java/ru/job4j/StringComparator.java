@@ -1,5 +1,7 @@
 package ru.job4j;
 
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 /**
  * @author vsokolov
@@ -12,17 +14,37 @@ public class StringComparator {
         if (firstStr.length() != secondStr.length()) {
             return false;
         }
-        TreeSet<Character> firstSet = new TreeSet<>();
+        TreeMap<Character, Integer> firstMap = new TreeMap<>();
         char[] firstArray = firstStr.toCharArray();
 
         for (int i = 0; i < firstArray.length; i++) {
-            firstSet.add(firstArray[i]);
+            if (firstMap.containsKey(firstArray[i])) {
+                firstMap.put(firstArray[i], firstMap.get(firstArray[i] + 1));
+            } else {
+                firstMap.put(firstArray[i], 1);
+            }
         }
-        TreeSet<Character> secondSet = new TreeSet<>();
-        char[] secondArray = secondStr.toCharArray();
+        TreeMap<Character, Integer> secondMap = new TreeMap<>();
+        char[] secondArray = firstStr.toCharArray();
+
         for (int i = 0; i < secondArray.length; i++) {
-            secondSet.add(secondArray[i]);
+            if (secondMap.containsKey(secondArray[i])) {
+                secondMap.put(secondArray[i], secondMap.get(secondArray[i] + 1));
+            } else {
+                secondMap.put(secondArray[i], 1);
+            }
         }
-        return firstSet.equals(secondSet);
+        TreeSet fs = (TreeSet) firstMap.keySet();
+        TreeSet ss = (TreeSet) secondMap.keySet();
+        boolean result = true;
+        if (fs.equals(ss)) {
+            for (Object c : fs) {
+                if (!firstMap.get(c).equals(secondMap.get(c))) {
+                    result = false;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 }
