@@ -59,17 +59,22 @@ public class Tree<E extends Comparable<E>> implements SimpleTree<E>, Iterable<No
     public Iterator<Node<E>> iterator() {
         return new Iterator<Node<E>>() {
 
-            Node<E> current = root;
+            Queue<Node<E>> queue = new LinkedList<>();
+            List<Node<E>> current = queue.poll().leaves();
             int index = 0;
 
             @Override
             public boolean hasNext() {
-                return (current.leaves() != null);
+                return !queue.isEmpty();
             }
 
             @Override
             public Node<E> next() {
-                return current.leaves().get(index++);
+                if (index >= current.size() && hasNext()) {
+                    index = 0;
+                    current = queue.poll().leaves();
+                }
+             return current.get(index++);
             }
         };
     }
