@@ -12,14 +12,15 @@ public class NonBlockingCache {
 
     private ConcurrentHashMap<Integer, Base> cache = new ConcurrentHashMap<>();
 
-   /* BiFunction<E e, T t, U u> b = new BiFunction() {
+    BiFunction<Base, Base, Base> b = new BiFunction<Base, Base, Base>() {
         @Override
-        public Object apply(Object o, Object o2) {
+        public Base apply(Base o, Base o2) {
             if (!o.equals(o2)) {
                 throw new OptimisticException();
-            };
+            }
+            return null;
         }
-    };*/
+    };
 
     public void add(Base model) { }
     public void update(Base model) { }
