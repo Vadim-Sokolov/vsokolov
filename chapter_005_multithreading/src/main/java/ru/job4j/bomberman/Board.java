@@ -23,13 +23,12 @@ public class Board {
         }
     }
 
-    public boolean move(Cell source, Cell dest) throws InterruptedException {
-        boolean result = true;
+    public synchronized boolean move(Cell source, Cell dest) throws InterruptedException {
+        boolean result = false;
         if (dest.lock.tryLock(500L, TimeUnit.MILLISECONDS)) {
                 player.setCurrent(dest);
                 source.lock.unlock();
-            } else {
-                result = false;
+                result = true;
             }
         return result;
     }
