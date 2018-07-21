@@ -1,0 +1,59 @@
+create table user (
+	id serial primary key,
+    name varchar(2000),
+    role_id int references role(id)
+);
+
+create table role (
+	id serial primary key,
+    name varchar(2000),
+    rule_id int references role_rule(id)
+);
+
+create table rule (
+	id serial primary key,
+    description text,
+    role_id int references role_rule(id)
+);
+
+create table role_rule (
+	id serial primary key,
+    role_id int references role(id),
+    rule_id int references rule(id)    
+);
+
+create table item (
+	id serial primary key,
+    name varchar(2000),
+    file_id int references file(id),
+    comment_id int references comment(id),
+    status_id int references status(id),
+    category_id int references category(id),
+    user_id int referencse user(id)
+);
+
+create table file (
+	id serial primary key,
+    name varchar(200)
+);
+
+create table comment (
+	id serial primary key,
+    description text
+);
+
+create table status (
+	id serial primary key,
+    name varchar(200)
+);
+
+create table category (
+	id serial primary key,
+    name varchar(200)
+);
+
+insert into role(name) values('Role');
+insert into status(name) values ('Status');
+insert into category(name) values ('Category');
+insert into users(name, role_id) values ('User', '1');
+insert into itmes(name, status_id, category_id) values ('Item', '1', '1');
