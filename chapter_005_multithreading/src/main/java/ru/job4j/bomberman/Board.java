@@ -23,7 +23,7 @@ public class Board {
         }
     }
 
-    public synchronized boolean move(Cell source, Cell dest) throws InterruptedException {
+    public boolean move(Cell source, Cell dest) throws InterruptedException {
         boolean result = false;
         if (dest.lock.tryLock(500L, TimeUnit.MILLISECONDS)) {
                 player.setCurrent(dest);
