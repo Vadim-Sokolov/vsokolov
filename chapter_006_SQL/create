@@ -1,59 +1,57 @@
-create table user (
-	id serial primary key,
+create table role (
+    id serial primary key,
+    name varchar(2000)
+);
+
+create table rule (
+    id serial primary key,
+    description text
+);
+
+create table users (
+    id serial primary key,
     name varchar(2000),
     role_id int references role(id)
 );
 
-create table role (
-	id serial primary key,
-    name varchar(2000),
-    rule_id int references role_rule(id)
-);
-
-create table rule (
-	id serial primary key,
-    description text,
-    role_id int references role_rule(id)
-);
-
 create table role_rule (
-	id serial primary key,
+    id serial primary key,
     role_id int references role(id),
-    rule_id int references rule(id)    
-);
-
-create table item (
-	id serial primary key,
-    name varchar(2000),
-    file_id int references file(id),
-    comment_id int references comment(id),
-    status_id int references status(id),
-    category_id int references category(id),
-    user_id int referencse user(id)
+    rule_id int references rule(id)
 );
 
 create table file (
-	id serial primary key,
-    name varchar(200)
+    id serial primary key,
+    name varchar(2000)
 );
 
 create table comment (
-	id serial primary key,
+    id serial primary key,
     description text
 );
 
 create table status (
-	id serial primary key,
-    name varchar(200)
+    id serial primary key,
+    name varchar(2000)
 );
 
 create table category (
-	id serial primary key,
-    name varchar(200)
+    id serial primary key,
+    name varchar(2000)
 );
 
-insert into role(name) values('Role');
-insert into status(name) values ('Status');
-insert into category(name) values ('Category');
-insert into users(name, role_id) values ('User', '1');
-insert into itmes(name, status_id, category_id) values ('Item', '1', '1');
+create table item (
+    id serial primary key,
+    name varchar(2000),
+    user_id int references users(id),
+    file_id int references file(id),
+    comment_id int references comment(id),
+    status_id int references status(id),
+    category_id int references category(id)
+);
+
+insert into role(name) values ('Buyer');
+insert into status(name) values ('Active');
+insert into category(name) values ('Electronics');
+insert into users(name, role_id) values ('First', 1);
+insert into item(name, status_id, category_id) values ('Phone', 1, 1);

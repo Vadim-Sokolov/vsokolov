@@ -18,6 +18,8 @@ public class StringComparator {
         char[] firstArray = firstStr.toCharArray();
 
         for (int i = 0; i < firstArray.length; i++) {
+            firstMap.putIfAbsent(firstArray[i], 1);
+           // firstMap.computeIfPresent(firstArray[i])
             if (firstMap.containsKey(firstArray[i])) {
                 firstMap.put(firstArray[i], firstMap.get(firstArray[i] + 1));
             } else {
