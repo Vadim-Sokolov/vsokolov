@@ -15,12 +15,14 @@ public class Board {
     private Player player;
 
     public Board(int size) {
+        this.board = new Cell[size][size];
         this.size = size;
-        for (int row = 0; row < size; row++) {
-            for (int column = 0; column < size; column++) {
-                board[column][row] = new Cell(column, row);
+        for (int row = 0; row < this.size; row++) {
+            for (int column = 0; column < this.size; column++) {
+                this.board[column][row] = new Cell(column, row);
             }
         }
+        this.player = new Player(board[1][1]);
     }
 
     public boolean move(Cell source, Cell dest) throws InterruptedException {
@@ -31,5 +33,17 @@ public class Board {
                 result = true;
             }
         return result;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public Cell getCell(int column, int row) {
+        return board[column][row];
+    }
+
+    public int getSize() {
+        return  this.size;
     }
 }
