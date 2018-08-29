@@ -93,5 +93,6 @@
         <module>chapter_003</module>
         <module>chapter_004_collections</module>
         <module>chapter_005_multithreading</module>
+        <module>chapter_006_SQL</module>
     </modules>
 </project>
