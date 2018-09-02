@@ -24,7 +24,7 @@ public class Player extends Thread {
     }
 
     public void run() {
-        while (true){
+        while (true) {
             try {
                 move(current, getDest(1, 0));
             } catch (InterruptedException e) {

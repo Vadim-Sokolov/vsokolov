@@ -28,7 +28,7 @@ public class Monster extends Thread {
     }
 
     public void run() {
-        while (true){
+        while (true) {
             try {
                 move(current, getDest());
             } catch (InterruptedException e) {
