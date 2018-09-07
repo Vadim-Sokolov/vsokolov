@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class SQLStorage {
 
-    private static final Logger log = new Logger();
+    private static final Logger LOGG = new Logger();
 
     public static void main(String[] args) {
 
@@ -21,13 +21,13 @@ public class SQLStorage {
             st.executeUpdate();
             st.close();
         } catch (Exception e) {
-            log.info(e.getMessage(), e);
+            LOGG.info(e.getMessage(), e);
         } finally {
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException e) {
-                    log.info(e.getMessage(), e);
+                    LOGG.info(e.getMessage(), e);
                 }
             }
         }
