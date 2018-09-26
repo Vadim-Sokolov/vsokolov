@@ -43,7 +43,7 @@ public class PaintTest {
 	
 	@Test
 	public void whenDrawTriangle() {
-		new Paint().draw(new Triangle());
+		//new Paint().draw(new Triangle());
 		assertThat(this.baosOut.toString(), 
 			is(System.getProperty("line.separator")
 			+ "+" + System.getProperty("line.separator")

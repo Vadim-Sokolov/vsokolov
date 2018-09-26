@@ -14,7 +14,7 @@ public class TriangleTest {
 	@Test
 	public void whenDrawTriangle() {
 		Triangle triangle = new Triangle();
-		assertThat(triangle.draw(), 
+		assertThat(triangle.draw(6),
 		is(System.getProperty("line.separator")
 		+ "+" + System.getProperty("line.separator")
 		+ "++" + System.getProperty("line.separator")
