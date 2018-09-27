@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.*;
 import java.lang.System;
+import java.util.function.Predicate;
 
 /**
  * @author vsokolov
@@ -15,43 +16,43 @@ public class Tracker {
 	private static final Random RN = new Random();
 
 	/**
-	* Метод реализаущий добавление заявки в хранилище
-	* @param item новая заявка
-	*/
+	 * Метод реализаущий добавление заявки в хранилище
+	 * @param item новая заявка
+	 */
 	public Item add(Item item) {
 		this.items.add(item);
 		return item;
 	}
-	
+
 	/**
-	* Метод реализаущий редактирование заявки в хранилище
-	* @param item редаkтируемая заявка
-	*/
-    public void replace(String id, Item item) {
+	 * Метод реализаущий редактирование заявки в хранилище
+	 * @param item редаkтируемая заявка
+	 */
+	public void replace(String id, Item item) {
 		Item target = this.findById(id);
 		this.items.remove(this.findById(id));
 		this.items.add(item);
 	}
-	
+
 	/**
-	* Method deletes an item from the array.
-	* @param id - to delete
-	*/
+	 * Method deletes an item from the array.
+	 * @param id - to delete
+	 */
 	public void delete(String id) {
 		this.items.remove(this.findById(id));
 	}
-	
+
 	/**
-	* Method returns a list of all the items.
-	*/
+	 * Method returns a list of all the items.
+	 */
 	public List<Item> findAll() {
 		return this.items;
 	}
-	
+
 	/**
-	* Method returns a list of all the items with a given name.
-	* param@ key - given name.
-	*/
+	 * Method returns a list of all the items with a given name.
+	 * param@ key - given name.
+	 */
 	public List<Item> findByName(String key) {
 		List<Item> result = new ArrayList<>();
 		for (Item item : this.items) {
@@ -61,15 +62,16 @@ public class Tracker {
 		}
 		return result;
 	}
-	
+
 	/**
-	* Method returns a item with a given id.
-	* param@ id - given id.
-	*/
-    public Item findById(String id) {
+	 * Method returns a item with a given id.
+	 * param@ id - given id.
+	 */
+	public Item findById(String id) {
+		Predicate<String> i  = (s)-> s.equals(?);
 		Item result = null;
 		for (Item item : this.items) {
-			if (item.getId().equals(id)) {
+			if(i.test(item.getId())) {
 				result = item;
 				break;
 			}
@@ -78,9 +80,9 @@ public class Tracker {
 	}
 
 	/**
-	* Метод генерирует уникальный ключ для заявки.
-	* @return Уникальный ключ.
-	*/
+	 * Метод генерирует уникальный ключ для заявки.
+	 * @return Уникальный ключ.
+	 */
 	protected String generateId() {
 		return String.valueOf(RN.nextInt(100000));
 	}
