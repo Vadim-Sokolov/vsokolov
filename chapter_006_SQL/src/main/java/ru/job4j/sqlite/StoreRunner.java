@@ -17,7 +17,7 @@ public class StoreRunner {
         Connection conn = null;
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:test.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:functionalinterface.db");
             System.out.println("Opened database successfully");
             StoreSQL ssql = new StoreSQL(conn);
             ssql.checkForTable("entry");
