@@ -67,17 +67,17 @@ public class Tracker {
 	 * Method returns a item with a given id.
 	 * param@ id - given id.
 	 */
-	public Item findById(String id) {
-		Predicate<String> i  = (s)-> s.equals(?);
-		Item result = null;
-		for (Item item : this.items) {
-			if(i.test(item.getId())) {
-				result = item;
-				break;
-			}
-		}
-		return result;
-	}
+	 public Item findById(String id) {
+	 	 Predicate<String> i  = (s)-> s.equals(?);
+	 	 Item result = null;
+		 for (Item item : this.items) {
+			 if(i.test(item.getId())) {
+				 result = item;
+				 break;
+			 }
+		 }
+		 return result;
+	 }
 
 	/**
 	 * Метод генерирует уникальный ключ для заявки.
